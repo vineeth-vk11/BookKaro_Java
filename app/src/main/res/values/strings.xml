@@ -8,4 +8,6 @@
     <string name="validate">Validate</string>
     <string name="enter_details">Please enter your details</string>
     <string name="get_started">Get started</string>
+    <string name="verification_failed">Verification failed. Please try again</string>
+    <string name="otp_sent_to">A one-time password has been sent to</string>
 </resources>
