@@ -99,7 +99,6 @@ public class IntroActivity extends AppCompatActivity {
                 back.setVisibility(View.VISIBLE);
                 next.setVisibility(View.VISIBLE);
                 getstarted.setVisibility(View.INVISIBLE);
-
                 next.setText("Next");
                 back.setText("Back");
             }

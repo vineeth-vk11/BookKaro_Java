@@ -13,9 +13,6 @@ class LoginEnterPhoneFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val binding: FragmentLoginEnterPhoneBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_login_enter_phone, container, false)
-
-
-
         return binding.root
     }
 }

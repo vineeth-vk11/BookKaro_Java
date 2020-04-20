@@ -13,9 +13,6 @@ class LoginValidateOTPFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val binding: FragmentLoginValidateOtpBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_login_validate_otp, container, false)
-
-
-
         return binding.root
     }
 }
