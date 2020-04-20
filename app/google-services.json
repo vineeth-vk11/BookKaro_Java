@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "908885664440",
+    "firebase_url": "https://bookkaro-b3416.firebaseio.com",
+    "project_id": "bookkaro-b3416",
+    "storage_bucket": "bookkaro-b3416.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:908885664440:android:c4d63d5571be8ee4348a4d",
+        "android_client_info": {
+          "package_name": "com.example.bookkaro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "908885664440-qutm1chuu496fn3f32qvv7tghtashier.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmpMRlpYPxDJLj3hbV7jsxBan2ShffWks"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "908885664440-qutm1chuu496fn3f32qvv7tghtashier.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
