@@ -14,6 +14,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/enter_details"
+            android:textSize="24dp"
+            android:textColor="#000000"
+            android:fontFamily="@font/poppins_medium"
             app:layout_constraintBottom_toTopOf="@+id/login_name_text_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -25,6 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -33,6 +37,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/login_name_edit"
                 android:layout_width="match_parent"
+                android:hint="Name"
                 android:layout_height="match_parent"/>
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -44,6 +49,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/login_name_text_layout">
@@ -51,17 +57,21 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/login_email_edit"
                 android:layout_width="match_parent"
+                android:hint="Email"
                 android:layout_height="match_parent" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/get_started_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:text="@string/get_started"
+            android:backgroundTint="@color/colorBlack"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/poppins_semibold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -5,6 +5,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +28,14 @@ public class IntroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
+
+        SharedPreferences prefs = getSharedPreferences("prefs",MODE_PRIVATE);
+        boolean firstStart = prefs.getBoolean("firstStart",true);
+
+        if(!firstStart){
+            Intent intent = new Intent(IntroActivity.this,LoginActivity.class);
+            startActivity(intent);
+        }
 
         next = findViewById(R.id.nextButton);
         back = findViewById(R.id.backButton);
@@ -55,6 +64,10 @@ public class IntroActivity extends AppCompatActivity {
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharedPreferences prefs = getSharedPreferences("prefs",MODE_PRIVATE);
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putBoolean("firstStart",false);
+                editor.apply();
                 Intent intent = new Intent(IntroActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
@@ -62,6 +75,10 @@ public class IntroActivity extends AppCompatActivity {
         getstarted.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharedPreferences prefs = getSharedPreferences("prefs",MODE_PRIVATE);
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putBoolean("firstStart",false);
+                editor.apply();
                 Intent intent = new Intent(IntroActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
