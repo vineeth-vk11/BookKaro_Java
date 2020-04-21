@@ -18,7 +18,13 @@ class LoginEnterDetailsFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val binding: FragmentLoginEnterDetailsBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_login_enter_details, container, false)
-        val button = binding.getStartedButton
+
+        binding.getStartedButton.setOnClickListener {
+            val intent = Intent(activity, MainActivity::class.java)
+            startActivity(intent)
+            requireActivity().finish()
+        }
+
         return binding.root
 
     }

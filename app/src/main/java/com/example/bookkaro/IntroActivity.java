@@ -70,6 +70,7 @@ public class IntroActivity extends AppCompatActivity {
                 editor.apply();
                 Intent intent = new Intent(IntroActivity.this, LoginActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         getstarted.setOnClickListener(new View.OnClickListener() {
@@ -81,6 +82,7 @@ public class IntroActivity extends AppCompatActivity {
                 editor.apply();
                 Intent intent = new Intent(IntroActivity.this, LoginActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -101,7 +103,7 @@ public class IntroActivity extends AppCompatActivity {
                 back.setEnabled(false);
                 back.setVisibility(View.INVISIBLE);
                 getstarted.setVisibility(View.INVISIBLE);
-                next.setText("Next");
+                next.setText(R.string.next);
                 back.setText("");
             } else if (position == 2){
                 next.setEnabled(true);
@@ -109,15 +111,15 @@ public class IntroActivity extends AppCompatActivity {
                 back.setVisibility(View.VISIBLE);
                 getstarted.setVisibility(View.VISIBLE);
                 next.setVisibility(View.INVISIBLE);
-                back.setText("Back");
+                back.setText(R.string.back);
             } else {
                 next.setEnabled(true);
                 back.setEnabled(true);
                 back.setVisibility(View.VISIBLE);
                 next.setVisibility(View.VISIBLE);
                 getstarted.setVisibility(View.INVISIBLE);
-                next.setText("Next");
-                back.setText("Back");
+                next.setText(R.string.next);
+                back.setText(R.string.back);
             }
 
         }

@@ -4,19 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".loginui.LoginEnterPhoneFragment">
 
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/enter_phone_coordinator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/login_header_text"
-            android:layout_width="wrap_content"
+            style="@style/TextHeader"
+            android:textSize="24sp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:fontFamily="@font/poppins_medium"
             android:text="@string/login"
-            android:textColor="#000000"
-            android:textSize="24dp"
             app:layout_constraintBottom_toTopOf="@+id/login_phone_text_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,8 +41,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/login_phone_edit"
-                android:inputType="number"
-                android:hint="Mobile Number"
+                android:inputType="phone"
+                android:hint="@string/mobile_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -55,10 +59,12 @@
             android:elevation="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/login_phone_text_layout"
-            app:layout_constraintVertical_bias="0.203" />
+            app:layout_constraintVertical_bias="0.2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
