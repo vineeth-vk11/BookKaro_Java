@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BookKaro</string>
+    <string name="app_name">Book Karo</string>
     <string name="login">Login</string>
     <string name="or">or</string>
     <string name="no_account_sign_up_prompt">Don\'t have an account? Sign up here</string>

@@ -1,14 +1,12 @@
 package com.example.bookkaro.loginui
 
 import android.os.Bundle
-import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
-import androidx.navigation.ui.NavigationUI
 import com.example.bookkaro.R
 import com.example.bookkaro.databinding.FragmentLoginEnterPhoneBinding
 import com.google.android.material.snackbar.Snackbar

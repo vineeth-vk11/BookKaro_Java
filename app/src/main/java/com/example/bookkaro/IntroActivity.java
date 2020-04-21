@@ -1,15 +1,15 @@
 package com.example.bookkaro;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.viewpager.widget.ViewPager;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.viewpager.widget.ViewPager;
 
 public class IntroActivity extends AppCompatActivity {
 
@@ -29,20 +29,12 @@ public class IntroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
 
-        SharedPreferences prefs = getSharedPreferences("prefs",MODE_PRIVATE);
-        boolean firstStart = prefs.getBoolean("firstStart",true);
-
-        if(!firstStart){
-            Intent intent = new Intent(IntroActivity.this,LoginActivity.class);
-            startActivity(intent);
-        }
-
         next = findViewById(R.id.nextButton);
         back = findViewById(R.id.backButton);
         getstarted = findViewById(R.id.getstarted);
         skip = findViewById(R.id.skipButton);
 
-        mSlideViewPager = (ViewPager)findViewById(R.id.SlideviewPager);
+        mSlideViewPager = findViewById(R.id.SlideviewPager);
 
         sliderAdapter = new SliderAdapter(this);
         mSlideViewPager.setAdapter(sliderAdapter);
