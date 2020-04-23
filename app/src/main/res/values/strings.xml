@@ -17,4 +17,10 @@
     <string name="back">Back</string>
     <string name="code_not_received">Didn\'t receive a code?</string>
     <string name="resend_otp">Resend OTP</string>
+    <string name="unable_to_add_account">Unable to add your account. Please try again.</string>
+
+    <string name="firebase_field_name">name</string>
+    <string name="firebase_field_email">email</string>
+    <string name="firebase_collection_user_data">UserData</string>
+
 </resources>

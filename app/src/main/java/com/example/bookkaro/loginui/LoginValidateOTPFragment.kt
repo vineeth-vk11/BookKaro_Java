@@ -18,6 +18,7 @@ import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
+import com.google.firebase.firestore.FirebaseFirestore
 import java.util.concurrent.TimeUnit
 
 class LoginValidateOTPFragment : Fragment() {
@@ -26,10 +27,14 @@ class LoginValidateOTPFragment : Fragment() {
     private lateinit var phone: String
 
     private lateinit var binding: FragmentLoginValidateOtpBinding
+    private lateinit var db: FirebaseFirestore
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login_validate_otp, container, false)
+        db = FirebaseFirestore.getInstance()
+
 
         phone = requireArguments().getString("phone_number").toString()
         val otpMessage = getString(R.string.otp_sent_to) + " +91 $phone"
@@ -50,10 +55,12 @@ class LoginValidateOTPFragment : Fragment() {
             override fun onVerificationCompleted(credential: PhoneAuthCredential) {
                 signInWithPhoneAuthCredential(credential)
             }
+
             override fun onVerificationFailed(e: FirebaseException) {
                 Snackbar.make(binding.validateOtpCoordinator, R.string.verification_failed, Snackbar.LENGTH_SHORT).show()
                 e.printStackTrace()
             }
+
             override fun onCodeSent(verificationId: String, token: PhoneAuthProvider.ForceResendingToken) {
                 Log.d("dsdas", "verification code sent")
                 storedVerificationId = verificationId
@@ -83,25 +90,39 @@ class LoginValidateOTPFragment : Fragment() {
 
     private fun getWaitTime(milli: Long): String {
         val seconds = TimeUnit.MILLISECONDS.toSeconds(milli)
-        return if(seconds <= 9)
+        return if (seconds <= 9)
             "Wait for 0:0$seconds"
         else
             "Wait for 0:$seconds"
     }
 
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
+        setLoading()
         FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener { task ->
-            if(task.isSuccessful) {
+            if (task.isSuccessful) {
                 Navigation.findNavController(binding.validateButton).navigate(R.id.action_loginValidateOTPFragment_to_loginEnterDetailsFragment)
             } else {
+                setNotLoading()
                 Snackbar.make(binding.validateOtpCoordinator, R.string.verification_failed, Snackbar.LENGTH_SHORT).show()
             }
         }
     }
 
+    private fun setLoading() {
+        binding.validateOtpProgress.visibility = View.VISIBLE
+        binding.validateOtpConstrain.visibility = View.INVISIBLE
+        binding.validateButton.isEnabled = false
+    }
+
+    private fun setNotLoading() {
+        binding.validateOtpProgress.visibility = View.GONE
+        binding.validateOtpConstrain.visibility = View.VISIBLE
+        binding.validateButton.isEnabled = true
+    }
+
     private fun setWaitingForOTP() {
         binding.codeNotReceivedWaitText.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorTextSubHeader))
-        binding.codeNotReceivedWaitText.setOnClickListener{}
+        binding.codeNotReceivedWaitText.setOnClickListener {}
     }
 
     private fun setRequestAgain() {
