@@ -111,6 +111,7 @@
                     android:id="@+id/profile_options_recycler"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
+                    android:layout_marginTop="8dp"
                     app:layout_constraintBottom_toTopOf="@+id/profile_logout_divider"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -130,11 +131,12 @@
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
+                    style="@style/TextLogout"
                     android:id="@+id/profile_logout_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:text="Logout"
+                    android:text="@string/logout"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/profile_logout_divider"
                     app:layout_constraintStart_toStartOf="@+id/profile_logout_divider" />
@@ -147,7 +149,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:text="Terms and Conditions"
+            android:text="@string/terms_and_conditions"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

@@ -39,6 +39,12 @@
         <action
             android:id="@+id/action_profileFragment_to_FAQFragment"
             app:destination="@id/FAQFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_tnCFragment"
+            app:destination="@id/tnCFragment" />
     </fragment>
     <fragment
         android:id="@+id/bookingsFragment"
@@ -63,4 +69,14 @@
         android:name="com.example.bookkaro.profileoptionsui.FAQFragment"
         android:label="fragment_faq"
         tools:layout="@layout/fragment_faq" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.bookkaro.profileoptionsui.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" />
+    <fragment
+        android:id="@+id/tnCFragment"
+        android:name="com.example.bookkaro.profileoptionsui.TnCFragment"
+        android:label="fragment_tnc"
+        tools:layout="@layout/fragment_tnc" />
 </navigation>

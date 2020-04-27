@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.bookkaro.LoginActivity
 import com.example.bookkaro.R
 import com.example.bookkaro.databinding.FragmentProfileBinding
 import com.example.bookkaro.helper.ProfileOption
@@ -28,7 +29,7 @@ class ProfileFragment : Fragment() {
 
         val options = arrayListOf(
                 ProfileOption(R.drawable.ic_address, "Manage Address", View.OnClickListener { navController.navigate(R.id.action_profileFragment_to_manageAddressFragment) }),
-                ProfileOption(R.drawable.bookings, "My Bookings", View.OnClickListener { navController.navigate(R.id.action_profileFragment_to_bookingsFragment) }),
+                ProfileOption(R.drawable.ic_bookings, "My Bookings", View.OnClickListener { navController.navigate(R.id.action_profileFragment_to_bookingsFragment) }),
                 ProfileOption(R.drawable.ic_about, "About Book Karo", View.OnClickListener { navController.navigate(R.id.action_profileFragment_to_aboutFragment) }),
                 ProfileOption(R.drawable.ic_help, "User Help", View.OnClickListener { navController.navigate(R.id.action_profileFragment_to_helpFragment) }),
                 ProfileOption(R.drawable.ic_faq, "FAQ", View.OnClickListener { navController.navigate(R.id.action_profileFragment_to_FAQFragment) }),
@@ -47,23 +48,33 @@ class ProfileFragment : Fragment() {
         }
 
         val db = FirebaseFirestore.getInstance()
-        val user = FirebaseAuth.getInstance().currentUser
+        val auth = FirebaseAuth.getInstance()
 
-        binding.profilePhoneText.text = user?.phoneNumber
-        db.collection(getString(R.string.firebase_collection_user_data)).document(user!!.uid)
+        binding.profilePhoneText.text = auth.currentUser?.phoneNumber
+        db.collection(getString(R.string.firebase_collection_user_data)).document(auth.currentUser!!.uid)
                 .get()
                 .addOnSuccessListener { document ->
                     binding.profileNameText.text = document.data?.get(getString(R.string.firebase_field_name)).toString()
-
                 }
                 .addOnFailureListener { exception ->
                     Log.d("ProfileFragment", "Failed to fetch document")
-                    //TODO: Notify user
+                    binding.profileNameText.text = getString(R.string.no_name)
                 }
 
         binding.profileEditText.setOnClickListener {
-            //TODO: Open edit details activity
+            navController.navigate(R.id.action_profileFragment_to_editProfileFragment)
         }
+
+        binding.profileLogoutText.setOnClickListener {
+            auth.signOut()
+            startActivity(Intent(activity, LoginActivity::class.java))
+            activity?.finish()
+        }
+
+        binding.tncText.setOnClickListener {
+            navController.navigate(R.id.action_profileFragment_to_tnCFragment)
+        }
+
         return binding.root
     }
 

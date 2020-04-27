@@ -19,6 +19,7 @@
 
     <color name="colorTextSubHeader">#828282</color>
     <color name="colorTextHeader">#000000</color>
+    <color name="colorLogout">#FF0000</color>
 
     <color name="colorBackgroundAppBar">#000000</color>
     <color name="colorTextAppBar">#FFFFFF</color>

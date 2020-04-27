@@ -22,10 +22,15 @@
     <string name="firebase_field_name">name</string>
     <string name="firebase_field_email">email</string>
     <string name="firebase_collection_user_data">UserData</string>
-    <string name="profile">Profile</string>
     <string name="edit">Edit</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Home</string>
+    <string name="my_bookings">My Bookings</string>
+    <string name="help">Help</string>
+    <string name="profile">Profile</string>
+
+    <string name="logout">Logout</string>
+    <string name="terms_and_conditions">Terms and Conditions</string>
+    <string name="no_name">Name not found</string>
 
 </resources>

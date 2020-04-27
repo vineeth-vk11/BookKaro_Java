@@ -30,4 +30,10 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <style name="TextLogout">
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:textColor">@color/colorLogout</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
 </resources>
