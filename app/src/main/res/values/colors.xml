@@ -14,9 +14,14 @@
     <color name="intro_description_color">#656565</color>
 
     <color name="colorSplashBackground">#000000</color>
+    <color name="colorFragmentBackground">#F0F0F0</color>
+    <color name="colorCardBackground">#FFFFFF</color>
 
     <color name="colorTextSubHeader">#828282</color>
     <color name="colorTextHeader">#000000</color>
+
+    <color name="colorBackgroundAppBar">#000000</color>
+    <color name="colorTextAppBar">#FFFFFF</color>
 
     <color name="colorBlack">#000000</color>
 </resources>

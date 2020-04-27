@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.bookkaro.mainui.HomeFragment"
+        android:label="HomeFragment">
+        <action
+            android:id="@+id/action_homeFragment_to_bookingsFragment"
+            app:destination="@id/bookingsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_helpFragment"
+            app:destination="@id/helpFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.bookkaro.mainui.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_manageAddressFragment"
+            app:destination="@id/manageAddressFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_bookingsFragment"
+            app:destination="@id/bookingsFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_helpFragment"
+            app:destination="@id/helpFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_FAQFragment"
+            app:destination="@id/FAQFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookingsFragment"
+        android:name="com.example.bookkaro.mainui.BookingsFragment"
+        android:label="BookingsFragment" />
+    <fragment
+        android:id="@+id/helpFragment"
+        android:name="com.example.bookkaro.mainui.HelpFragment"
+        android:label="HelpFragment" />
+    <fragment
+        android:id="@+id/manageAddressFragment"
+        android:name="com.example.bookkaro.profileoptionsui.ManageAddressFragment"
+        android:label="fragment_manage_address"
+        tools:layout="@layout/fragment_manage_address" />
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.example.bookkaro.profileoptionsui.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/FAQFragment"
+        android:name="com.example.bookkaro.profileoptionsui.FAQFragment"
+        android:label="fragment_faq"
+        tools:layout="@layout/fragment_faq" />
+</navigation>

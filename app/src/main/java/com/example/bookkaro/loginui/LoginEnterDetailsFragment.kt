@@ -38,7 +38,7 @@ class LoginEnterDetailsFragment : Fragment() {
                             val userData = hashMapOf(getString(R.string.firebase_field_name) to binding.loginNameEdit.text.toString(),
                                     getString(R.string.firebase_field_email) to binding.loginEmailEdit.text.toString())
 
-                            db.collection(getString(R.string.firebase_collection_user_data)).document(user!!.uid)
+                            db.collection(getString(R.string.firebase_collection_user_data)).document(user.uid)
                                     .set(userData)
                                     .addOnSuccessListener {
                                         val intent = Intent(activity, MainActivity::class.java)
