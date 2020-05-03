@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.bookkaro.helper.SliderAdapter;
+
 public class IntroActivity extends AppCompatActivity {
 
     private ViewPager mSlideViewPager;

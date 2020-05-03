@@ -1,4 +1,4 @@
-package com.example.bookkaro;
+package com.example.bookkaro.helper;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,16 +10,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bookkaro.R;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryHolder> {
 
     Context context;
-    ArrayList<Category> categories;
+    List<Category> categories;
 
-    public CategoryAdapter(Context c, ArrayList<Category> p){
+    public CategoryAdapter(Context c, List<Category> p) {
         context = c;
         categories = p;
     }
