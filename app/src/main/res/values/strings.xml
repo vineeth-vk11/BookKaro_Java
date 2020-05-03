@@ -32,5 +32,7 @@
     <string name="logout">Logout</string>
     <string name="terms_and_conditions">Terms and Conditions</string>
     <string name="no_name">Name not found</string>
+    <string name="see_all">See all</string>
+    <string name="see_less">See less</string>
 
 </resources>
