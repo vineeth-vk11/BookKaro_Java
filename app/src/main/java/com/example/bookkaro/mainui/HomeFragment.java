@@ -17,8 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bookkaro.Ads;
 import com.example.bookkaro.AdsAdapter;
-import com.example.bookkaro.Category;
-import com.example.bookkaro.CategoryAdapter;
+
 import com.example.bookkaro.R;
 import com.example.bookkaro.helper.Category;
 import com.example.bookkaro.helper.CategoryAdapter;
@@ -39,7 +38,6 @@ public class HomeFragment extends Fragment {
     RecyclerView categoryRecycler;
     private final int STATE_SEE_MORE = 1000;
     RecyclerView adsRecycler;
-    ArrayList<Category> list;
     ArrayList<Ads>list1;
     CategoryAdapter adapter;
     private final int STATE_SEE_LESS = 1001;
