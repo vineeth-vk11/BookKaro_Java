@@ -1,4 +1,4 @@
-package com.example.bookkaro;
+package com.example.bookkaro.helper;
 
 public class Ads {
     private String image;

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,23 +15,20 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.bookkaro.Ads;
-import com.example.bookkaro.AdsAdapter;
-
 import com.example.bookkaro.Interface.iFirebaseLoadListener;
 import com.example.bookkaro.R;
-import com.example.bookkaro.ServicesGroup;
-import com.example.bookkaro.ServicesData;
-
-import com.example.bookkaro.ServicesGroupAdapter;
+import com.example.bookkaro.helper.Ads;
+import com.example.bookkaro.helper.AdsAdapter;
 import com.example.bookkaro.helper.Category;
 import com.example.bookkaro.helper.CategoryAdapter;
+import com.example.bookkaro.helper.ServicesData;
+import com.example.bookkaro.helper.ServicesGroup;
+import com.example.bookkaro.helper.ServicesGroupAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -86,13 +82,11 @@ public class HomeFragment extends Fragment implements com.example.bookkaro.Inter
 
 
         list = new ArrayList<Category>();
-        final ProgressBar progressBar = view.findViewById(R.id.progressBar);
         list1 = new ArrayList<Ads>();
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                progressBar.setVisibility(View.GONE);
                 for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren()) {
                     Category p = dataSnapshot1.getValue(Category.class);
                     list.add(p);

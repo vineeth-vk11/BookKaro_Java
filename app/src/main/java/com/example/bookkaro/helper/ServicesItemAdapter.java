@@ -1,4 +1,4 @@
-package com.example.bookkaro;
+package com.example.bookkaro.helper;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,14 +10,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bookkaro.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-class ServicesItemAdapter extends RecyclerView.Adapter<ServicesItemAdapter.ServicesViewHolder> {
+public class ServicesItemAdapter extends RecyclerView.Adapter<ServicesItemAdapter.ServicesViewHolder> {
 
     private Context context;
-    protected List<ServicesData> itemDataList;
+    private List<ServicesData> itemDataList;
 
     public ServicesItemAdapter(Context context, List<ServicesData> itemDataList) {
         this.context = context;
@@ -27,7 +28,7 @@ class ServicesItemAdapter extends RecyclerView.Adapter<ServicesItemAdapter.Servi
     @NonNull
     @Override
     public ServicesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(context).inflate(R.layout.service_list_item,parent,false);
+        View itemView = LayoutInflater.from(context).inflate(R.layout.category_item, parent, false);
         return new ServicesViewHolder(itemView);
     }
 
@@ -48,8 +49,8 @@ class ServicesItemAdapter extends RecyclerView.Adapter<ServicesItemAdapter.Servi
 
         public ServicesViewHolder(@NonNull View itemView) {
             super(itemView);
-            service_name = itemView.findViewById(R.id.serviceNameHolder);
-            service_icon = itemView.findViewById(R.id.serviceIconHolder);
+            service_icon = itemView.findViewById(R.id.iconHolder);
+            service_name = itemView.findViewById(R.id.nameHolder);
 
         }
     }

@@ -1,4 +1,4 @@
-package com.example.bookkaro;
+package com.example.bookkaro.helper;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bookkaro.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ public class AdsAdapter extends RecyclerView.Adapter<AdsAdapter.AdsHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull AdsHolder holder, int position) {
-        Picasso.get().load(ads.get(position).getImage()).into(holder.Ad);
+        Picasso.get().load(ads.get(position).getImage()).fit().into(holder.Ad);
     }
 
     @Override

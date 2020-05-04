@@ -34,5 +34,7 @@
     <string name="no_name">Name not found</string>
     <string name="see_all">See all</string>
     <string name="see_less">See less</string>
+    <string name="categories">Categories</string>
+    <string name="services_by_category">Services by category</string>
 
 </resources>

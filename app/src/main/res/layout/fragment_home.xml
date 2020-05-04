@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="match_parent"
+<androidx.core.widget.NestedScrollView android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:fillViewport="true"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -85,9 +84,9 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/poppins_bold"
-            android:text="Categories"
+            android:text="@string/categories"
             android:textColor="@color/colorBlack"
-            android:textSize="20dp"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
@@ -102,41 +101,44 @@
             app:layout_constraintBaseline_toBaselineOf="@+id/textView"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:indeterminateTint="@color/colorBlack"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="@+id/categoryRecyclerView"
-            app:layout_constraintEnd_toEndOf="@+id/categoryRecyclerView"
-            app:layout_constraintStart_toStartOf="@+id/categoryRecyclerView"
-            app:layout_constraintTop_toTopOf="@+id/categoryRecyclerView" />
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/categoryRecyclerView"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:minHeight="116dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/AdRecycler"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal"
-            android:scrollbars="horizontal"
+            android:scrollbars="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/categoryRecyclerView" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/servicesRecycler"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/services_by_category"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/AdRecycler" />
     </androidx.constraintlayout.widget.ConstraintLayout>

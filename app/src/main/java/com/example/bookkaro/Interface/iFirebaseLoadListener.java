@@ -1,6 +1,6 @@
 package com.example.bookkaro.Interface;
 
-import com.example.bookkaro.ServicesGroup;
+import com.example.bookkaro.helper.ServicesGroup;
 
 import java.util.List;
 
