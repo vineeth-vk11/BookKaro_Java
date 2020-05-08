@@ -7,6 +7,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="SplashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+        <item name="android:statusBarColor">@color/colorSplashBackground</item>
+        <item name="android:navigationBarColor">@color/colorSplashBackground</item>
+    </style>
+
     <style name="TextToolbar">
         <item name="android:background">@color/colorBackgroundAppBar</item>
         <item name="android:fontFamily">@font/poppins_medium</item>

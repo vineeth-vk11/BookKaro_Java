@@ -11,6 +11,7 @@ import com.example.bookkaro.helper.Booking
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 
 class BookingsRepository(val application: Application) {
     private var firestoreDB = FirebaseFirestore.getInstance()
@@ -32,7 +33,7 @@ class BookingsViewModel(private val application: Application) : ViewModel() {
 
     fun getBookings(): LiveData<List<Booking>> {
 
-        bookingsRepository.getBookings().addSnapshotListener { querySnapshot, firebaseFirestoreException ->
+        bookingsRepository.getBookings().orderBy(application.getString(R.string.firestore_sub_collection_bookings_field_service_date), Query.Direction.DESCENDING).addSnapshotListener { querySnapshot, firebaseFirestoreException ->
             if (firebaseFirestoreException != null) {
                 Log.e(TAG, "Firestore listening failed.")
                 bookings.value = null
@@ -40,8 +41,7 @@ class BookingsViewModel(private val application: Application) : ViewModel() {
             }
 
             val bookingsList: MutableList<Booking> = mutableListOf()
-            if (querySnapshot != null) {
-                for (doc in querySnapshot) {
+            for (doc in querySnapshot!!) {
                     val booking = Booking(
                             doc.id,
                             doc.getString(application.getString(R.string.firestore_sub_collection_bookings_field_shop_icon)),
@@ -53,7 +53,7 @@ class BookingsViewModel(private val application: Application) : ViewModel() {
                             doc.getLong(application.getString(R.string.firestore_sub_collection_bookings_field_service_status))!!)
                     bookingsList.add(booking)
                 }
-            }
+
             bookings.value = bookingsList
         }
         return bookings

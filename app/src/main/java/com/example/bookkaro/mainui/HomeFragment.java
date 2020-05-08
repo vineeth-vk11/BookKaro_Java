@@ -131,8 +131,6 @@ public class HomeFragment extends Fragment implements com.example.bookkaro.Inter
                 }
                 adapter1 = new AdsAdapter(getContext(),list1);
                 adsRecycler.setAdapter(adapter1);
-                Toast.makeText(getContext(),"Successful",Toast.LENGTH_SHORT).show();
-
             }
 
             @Override

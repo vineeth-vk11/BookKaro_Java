@@ -49,11 +49,10 @@
     <string name="firebase_field_email">email</string>
     <string name="edit">Edit</string>
 
-    <string name="status_received">Received</string>
-    <string name="status_confirming">Confirming</string>
-    <string name="status_confirmed">Confirmed</string>
+    <string name="status_pending">Pending</string>
+    <string name="status_accepted">Accepted</string>
     <string name="status_canceled">Canceled</string>
-    <string name="status_completed">Completed</string>
+
     <string name="shop_image">Shop image</string>
 
 </resources>

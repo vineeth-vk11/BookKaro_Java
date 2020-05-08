@@ -15,12 +15,9 @@ import java.util.*
 
 data class Booking(val docID: String, val shopThumbnailUrl: String?, val shopName: String, val bookingDate: Date, val shopAddress: String, val servicePrice: Long, val serviceName: String, val serviceStatus: Long) {
     companion object {
-        const val STATUS_RECEIVED = 100L
-        const val STATUS_CONFIRMING_WITH_SHOP = 101L
-        const val STATUS_CONFIRMED = 102L
-        const val STATUS_CANCELED = 103L
-        const val STATUS_COMPLETED = 104L
-
+        const val STATUS_PENDING = 100L
+        const val STATUS_ACCEPTED = 101L
+        const val STATUS_CANCELED = 102L
     }
 }
 
@@ -60,13 +57,22 @@ class BookingsAdapter(val items: List<Booking>, val context: Context) : Recycler
         holder.serviceDateText.text = formatter.format(booking.bookingDate)
         holder.serviceNameText.text = booking.serviceName
         holder.servicePriceText.text = priceText
-        holder.statusText.text = when (booking.serviceStatus) {
-            Booking.STATUS_RECEIVED -> context.getString(R.string.status_received)
-            Booking.STATUS_CONFIRMING_WITH_SHOP -> context.getString(R.string.status_confirming)
-            Booking.STATUS_CONFIRMED -> context.getString(R.string.status_confirmed)
-            Booking.STATUS_CANCELED -> context.getString(R.string.status_canceled)
-            Booking.STATUS_COMPLETED -> context.getString(R.string.status_completed)
-            else -> context.getString(R.string.status_received)
+        when (booking.serviceStatus) {
+            Booking.STATUS_ACCEPTED -> {
+                holder.statusText.text = context.getString(R.string.status_accepted)
+                holder.statusText.setTextColor(context.getColor(R.color.statusAccepted))
+            }
+            Booking.STATUS_PENDING -> {
+                holder.statusText.text = context.getString(R.string.status_pending)
+                holder.statusText.setTextColor(context.getColor(R.color.statusPending))
+            }
+            Booking.STATUS_CANCELED -> {
+                holder.statusText.text = context.getString(R.string.status_canceled)
+                holder.statusText.setTextColor(context.getColor(R.color.statusCanceled))
+            }
+            else -> {
+                holder.statusText.text = context.getString(R.string.status_pending)
+            }
         }
         //TODO: Set onClickListeners on helpText, cancelText, and rescheduleText
     }
