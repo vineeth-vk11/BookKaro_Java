@@ -51,7 +51,7 @@ class ProfileFragment : Fragment() {
         val auth = FirebaseAuth.getInstance()
 
         binding.profilePhoneText.text = auth.currentUser?.phoneNumber
-        db.collection(getString(R.string.firebase_collection_user_data)).document(auth.currentUser!!.uid)
+        db.collection(getString(R.string.firestore_collection_user_data)).document(auth.currentUser!!.uid)
                 .get()
                 .addOnSuccessListener { document ->
                     binding.profileNameText.text = document.data?.get(getString(R.string.firebase_field_name)).toString()

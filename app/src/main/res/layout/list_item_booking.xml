@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/booking_shop_image"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="16dp"
+                    android:contentDescription="@string/shop_image"
+                    app:layout_constraintBottom_toBottomOf="@+id/booking_shop_address"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/booking_shop_name" />
+
+                <TextView
+                    android:id="@+id/booking_shop_name"
+                    style="@style/TextServiceInfo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="12dp"
+                    app:layout_constraintEnd_toStartOf="@+id/booking_price"
+                    app:layout_constraintStart_toEndOf="@+id/booking_shop_image"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Ayyapa AC shop" />
+
+                <TextView
+                    android:id="@+id/booking_date"
+                    style="@style/TextServiceInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    app:layout_constraintStart_toEndOf="@+id/booking_shop_image"
+                    app:layout_constraintTop_toBottomOf="@+id/booking_shop_name"
+                    tools:text="April 12, 10:00 AM" />
+
+                <TextView
+                    android:id="@+id/booking_shop_address"
+                    style="@style/TextServiceInfo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:textColor="@color/colorBlack"
+                    app:layout_constraintEnd_toStartOf="@+id/booking_service_name"
+                    app:layout_constraintStart_toEndOf="@+id/booking_shop_image"
+                    app:layout_constraintTop_toBottomOf="@+id/booking_date"
+                    tools:text="1/188, Siv avenue, Gollapudi" />
+
+                <TextView
+                    android:id="@+id/booking_price"
+                    style="@style/TextServiceInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="12dp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/booking_shop_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="₹350" />
+
+                <TextView
+                    android:id="@+id/booking_service_name"
+                    style="@style/TextServiceInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="12dp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/booking_shop_address"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="AC Repair" />
+
+                <TextView
+                    android:id="@+id/booking_help"
+                    style="@style/TextServiceInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="@string/help"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/booking_shop_address" />
+
+                <TextView
+                    android:id="@+id/booking_cancel"
+                    style="@style/TextServiceInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="@android:string/cancel"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/booking_help"
+                    app:layout_constraintStart_toEndOf="@+id/booking_help" />
+
+                <TextView
+                    android:id="@+id/booking_reschedule"
+                    style="@style/TextServiceInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/reschedule"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/booking_cancel"
+                    app:layout_constraintStart_toEndOf="@+id/booking_cancel" />
+
+                <TextView
+                    android:id="@+id/booking_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/booking_reschedule"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:text="Confirming" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -26,7 +26,7 @@ class LoginEnterDetailsFragment : Fragment() {
         val db = FirebaseFirestore.getInstance()
 
         setLoading()
-        db.collection(getString(R.string.firebase_collection_user_data)).document(user!!.uid)
+        db.collection(getString(R.string.firestore_collection_user_data)).document(user!!.uid)
                 .get()
                 .addOnSuccessListener { document ->
                     if (document == null) {
@@ -38,7 +38,7 @@ class LoginEnterDetailsFragment : Fragment() {
                             val userData = hashMapOf(getString(R.string.firebase_field_name) to binding.loginNameEdit.text.toString(),
                                     getString(R.string.firebase_field_email) to binding.loginEmailEdit.text.toString())
 
-                            db.collection(getString(R.string.firebase_collection_user_data)).document(user.uid)
+                            db.collection(getString(R.string.firestore_collection_user_data)).document(user.uid)
                                     .set(userData)
                                     .addOnSuccessListener {
                                         val intent = Intent(activity, MainActivity::class.java)

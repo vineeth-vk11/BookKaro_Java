@@ -19,11 +19,6 @@
     <string name="resend_otp">Resend OTP</string>
     <string name="unable_to_add_account">Unable to add your account. Please try again.</string>
 
-    <string name="firebase_field_name">name</string>
-    <string name="firebase_field_email">email</string>
-    <string name="firebase_collection_user_data">UserData</string>
-    <string name="edit">Edit</string>
-
     <string name="home">Home</string>
     <string name="my_bookings">My Bookings</string>
     <string name="help">Help</string>
@@ -36,5 +31,29 @@
     <string name="see_less">See less</string>
     <string name="categories">Categories</string>
     <string name="services_by_category">Services by category</string>
+    <string name="reschedule">Reschedule</string>
+
+    <string name="rupee_symbol">₹</string>
+
+    <!-- Firebase Firestore values-->
+    <string name="firestore_collection_user_data" translatable="false">UserData</string>
+    <string name="firestore_sub_collection_bookings" translatable="false">Bookings</string>
+    <string name="firestore_sub_collection_bookings_field_shop_icon" translatable="false">shopIconUrl</string>
+    <string name="firestore_sub_collection_bookings_field_shop_name" translatable="false">shopName</string>
+    <string name="firestore_sub_collection_bookings_field_service_date" translatable="false">serviceDate</string>
+    <string name="firestore_sub_collection_bookings_field_shop_address" translatable="false">shopAddress</string>
+    <string name="firestore_sub_collection_bookings_field_service_price" translatable="false">servicePrice</string>
+    <string name="firestore_sub_collection_bookings_field_service_name" translatable="false">serviceName</string>
+    <string name="firestore_sub_collection_bookings_field_service_status" translatable="false">status</string>
+    <string name="firebase_field_name">name</string>
+    <string name="firebase_field_email">email</string>
+    <string name="edit">Edit</string>
+
+    <string name="status_received">Received</string>
+    <string name="status_confirming">Confirming</string>
+    <string name="status_confirmed">Confirmed</string>
+    <string name="status_canceled">Canceled</string>
+    <string name="status_completed">Completed</string>
+    <string name="shop_image">Shop image</string>
 
 </resources>
