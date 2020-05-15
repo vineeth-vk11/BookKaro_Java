@@ -29,14 +29,14 @@ class LoginEnterDetailsFragment : Fragment() {
         db.collection(getString(R.string.firestore_collection_user_data)).document(user!!.uid)
                 .get()
                 .addOnSuccessListener { document ->
-                    if (document == null) {
+                    if (document.data.isNullOrEmpty()) {
                         setNotLoading()
                         binding.getStartedButton.setOnClickListener {
 
                             setLoading()
 
-                            val userData = hashMapOf(getString(R.string.firebase_field_name) to binding.loginNameEdit.text.toString(),
-                                    getString(R.string.firebase_field_email) to binding.loginEmailEdit.text.toString())
+                            val userData = hashMapOf(getString(R.string.firestore_collection_user_data_field_name) to binding.loginNameEdit.text.toString(),
+                                    getString(R.string.firestore_collection_user_data_field_email) to binding.loginEmailEdit.text.toString())
 
                             db.collection(getString(R.string.firestore_collection_user_data)).document(user.uid)
                                     .set(userData)

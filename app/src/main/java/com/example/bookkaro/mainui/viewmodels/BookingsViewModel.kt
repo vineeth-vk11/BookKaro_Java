@@ -11,29 +11,31 @@ import com.example.bookkaro.helper.Booking
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
 
-class BookingsRepository(val application: Application) {
+class FirestoreRepository(private val application: Application) {
     private var firestoreDB = FirebaseFirestore.getInstance()
-    private val uid = FirebaseAuth.getInstance().currentUser!!.uid
 
     fun getBookings(): CollectionReference {
-        return firestoreDB.collection(application.getString(R.string.firestore_collection_user_data))
-                .document(uid)
-                .collection(application.getString(R.string.firestore_sub_collection_bookings))
+        return firestoreDB.collection(application.getString(R.string.firestore_collection_order_data))
     }
+
+    fun getShops(): CollectionReference {
+        return firestoreDB.collection(application.getString(R.string.firestore_collection_vendor_data))
+    }
+
 }
 
 class BookingsViewModel(private val application: Application) : ViewModel() {
 
-    val TAG = "BOOKINGS_VIEW_MODEL"
+    private val TAG = "BOOKINGS_VIEW_MODEL"
 
-    private val bookingsRepository = BookingsRepository(application)
+    private val firestoreRepository = FirestoreRepository(application)
     private var bookings: MutableLiveData<List<Booking>> = MutableLiveData()
+    private val uid = FirebaseAuth.getInstance().currentUser!!.uid
 
     fun getBookings(): LiveData<List<Booking>> {
 
-        bookingsRepository.getBookings().orderBy(application.getString(R.string.firestore_sub_collection_bookings_field_service_date), Query.Direction.DESCENDING).addSnapshotListener { querySnapshot, firebaseFirestoreException ->
+        firestoreRepository.getBookings().whereEqualTo(application.getString(R.string.firestore_collection_order_data_field_user_id), uid).addSnapshotListener { querySnapshot, firebaseFirestoreException ->
             if (firebaseFirestoreException != null) {
                 Log.e(TAG, "Firestore listening failed.")
                 bookings.value = null
@@ -42,19 +44,47 @@ class BookingsViewModel(private val application: Application) : ViewModel() {
 
             val bookingsList: MutableList<Booking> = mutableListOf()
             for (doc in querySnapshot!!) {
+                val status = doc.getLong(application.getString(R.string.firestore_collection_order_data_field_status))
+                        ?: Booking.STATUS_PENDING
+                val shopId = doc.getString(application.getString(R.string.firestore_collection_order_data_field_accepted_shop_id))
+                        ?: ""
+                if (status == Booking.STATUS_PENDING) {
                     val booking = Booking(
                             doc.id,
-                            doc.getString(application.getString(R.string.firestore_sub_collection_bookings_field_shop_icon)),
-                            doc.getString(application.getString(R.string.firestore_sub_collection_bookings_field_shop_name))!!,
-                            doc.getDate(application.getString(R.string.firestore_sub_collection_bookings_field_service_date))!!,
-                            doc.getString(application.getString(R.string.firestore_sub_collection_bookings_field_shop_address))!!,
-                            doc.getLong(application.getString(R.string.firestore_sub_collection_bookings_field_service_price))!!,
-                            doc.getString(application.getString(R.string.firestore_sub_collection_bookings_field_service_name))!!,
-                            doc.getLong(application.getString(R.string.firestore_sub_collection_bookings_field_service_status))!!)
+                            doc.getDate(application.getString(R.string.firestore_collection_order_data_field_service_date))!!,
+                            doc.getString(application.getString(R.string.firestore_collection_order_data_field_service_name))!!,
+                            doc.getLong(application.getString(R.string.firestore_collection_order_data_field_service_price))!!,
+                            status,
+                            shopId,
+                            null,
+                            null,
+                            null)
                     bookingsList.add(booking)
+                    bookingsList.sortByDescending { it.serviceDate }
+                    bookings.value = bookingsList
+                } else {
+                    firestoreRepository.getShops().document(shopId).get()
+                            .addOnSuccessListener { shopData ->
+                                val booking = Booking(
+                                        doc.id,
+                                        doc.getDate(application.getString(R.string.firestore_collection_order_data_field_service_date))!!,
+                                        doc.getString(application.getString(R.string.firestore_collection_order_data_field_service_name))!!,
+                                        doc.getLong(application.getString(R.string.firestore_collection_order_data_field_service_price))!!,
+                                        status,
+                                        shopId,
+                                        shopData.getString(application.getString(R.string.firestore_collection_vendor_data_field_shop_icon_url))!!,
+                                        shopData.getString(application.getString(R.string.firestore_collection_vendor_data_field_shop_name))!!,
+                                        shopData.getString(application.getString(R.string.firestore_collection_vendor_data_field_shop_address))!!)
+                                bookingsList.add(booking)
+                                bookingsList.sortByDescending { it.serviceDate }
+                                bookings.value = bookingsList
+                            }
+                            .addOnFailureListener {
+                                Log.e(TAG, "Failed to fetch shop data")
+                                it.printStackTrace()
+                            }
                 }
-
-            bookings.value = bookingsList
+            }
         }
         return bookings
     }

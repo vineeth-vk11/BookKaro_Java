@@ -2,8 +2,6 @@
     <string name="app_name">Book Karo</string>
     <string name="login">Login</string>
     <string name="or">or</string>
-    <string name="no_account_sign_up_prompt">Don\'t have an account? Sign up here</string>
-    <string name="sign_up">Sign Up</string>
     <string name="enter_otp_prompt">Please enter the one-time password to verify your account</string>
     <string name="validate">Validate</string>
     <string name="enter_details">Please enter your details</string>
@@ -35,24 +33,33 @@
 
     <string name="rupee_symbol">₹</string>
 
-    <!-- Firebase Firestore values-->
+    <!--START: Firebase Firestore values-->
     <string name="firestore_collection_user_data" translatable="false">UserData</string>
-    <string name="firestore_sub_collection_bookings" translatable="false">Bookings</string>
-    <string name="firestore_sub_collection_bookings_field_shop_icon" translatable="false">shopIconUrl</string>
-    <string name="firestore_sub_collection_bookings_field_shop_name" translatable="false">shopName</string>
-    <string name="firestore_sub_collection_bookings_field_service_date" translatable="false">serviceDate</string>
-    <string name="firestore_sub_collection_bookings_field_shop_address" translatable="false">shopAddress</string>
-    <string name="firestore_sub_collection_bookings_field_service_price" translatable="false">servicePrice</string>
-    <string name="firestore_sub_collection_bookings_field_service_name" translatable="false">serviceName</string>
-    <string name="firestore_sub_collection_bookings_field_service_status" translatable="false">status</string>
-    <string name="firebase_field_name">name</string>
-    <string name="firebase_field_email">email</string>
-    <string name="edit">Edit</string>
+    <string name="firestore_collection_user_data_field_name" translatable="false">name</string>
+    <string name="firestore_collection_user_data_field_email" translatable="false">email</string>
+
+    <string name="firestore_collection_order_data" translatable="false">OrderData</string>
+    <string name="firestore_collection_order_data_field_accepted_shop_id" translatable="false">acceptedShopId</string>
+    <string name="firestore_collection_order_data_field_service_date" translatable="false">serviceDate</string>
+    <string name="firestore_collection_order_data_field_service_name" translatable="false">serviceName</string>
+    <string name="firestore_collection_order_data_field_service_price" translatable="false">servicePrice</string>
+    <string name="firestore_collection_order_data_field_status" translatable="false">status</string>
+    <string name="firestore_collection_order_data_field_user_id" translatable="false">userId</string>
+
+    <string name="firestore_collection_vendor_data" translatable="false">VendorData</string>
+    <string name="firestore_collection_vendor_data_field_shop_address" translatable="false">shopAddress</string>
+    <string name="firestore_collection_vendor_data_field_shop_icon_url" translatable="false">shopIconUrl</string>
+    <string name="firestore_collection_vendor_data_field_shop_name" translatable="false">shopName</string>
+    <string name="firestore_collection_vendor_data_field_shop_number" translatable="false">shopNumber</string>
+    <!--END: Firebase Firestore values-->
+
 
     <string name="status_pending">Pending</string>
     <string name="status_accepted">Accepted</string>
     <string name="status_canceled">Canceled</string>
 
     <string name="shop_image">Shop image</string>
+    <string name="shop_acceptance_waiting">Waiting for a shop to accept</string>
+    <string name="edit">Edit</string>
 
 </resources>

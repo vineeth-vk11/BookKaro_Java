@@ -54,7 +54,7 @@ class ProfileFragment : Fragment() {
         db.collection(getString(R.string.firestore_collection_user_data)).document(auth.currentUser!!.uid)
                 .get()
                 .addOnSuccessListener { document ->
-                    binding.profileNameText.text = document.data?.get(getString(R.string.firebase_field_name)).toString()
+                    binding.profileNameText.text = document.data?.get(getString(R.string.firestore_collection_user_data_field_name)).toString()
                 }
                 .addOnFailureListener { exception ->
                     Log.d("ProfileFragment", "Failed to fetch document")

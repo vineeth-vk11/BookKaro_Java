@@ -25,7 +25,7 @@ class BookingsFragment : Fragment() {
 
         val viewModel = ViewModelProvider(this, BookingsViewModelFactory(requireActivity().application)).get(BookingsViewModel::class.java)
         viewModel.getBookings().observe(viewLifecycleOwner, androidx.lifecycle.Observer { bookings ->
-            if (bookings.isNotEmpty()) {
+            if (!bookings.isNullOrEmpty()) {
                 val adapter = BookingsAdapter(bookings, requireContext())
                 binding.bookingsRecycler.adapter = adapter
             }
