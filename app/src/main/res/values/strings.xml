@@ -61,5 +61,6 @@
     <string name="shop_image">Shop image</string>
     <string name="shop_acceptance_waiting">Waiting for a shop to accept</string>
     <string name="edit">Edit</string>
+    <string name="no_requested_services">You haven\'t requested any services</string>
 
 </resources>
