@@ -17,7 +17,9 @@ data class Booking(val docID: String, val serviceDate: Date, val serviceName: St
     companion object {
         const val STATUS_PENDING = 100L
         const val STATUS_ACCEPTED = 101L
-        const val STATUS_CANCELED = 102L
+        const val STATUS_STARTED = 102L
+        const val STATUS_COMPLETED = 103L
+        const val STATUS_CANCELED = 104L
     }
 }
 
@@ -69,6 +71,14 @@ class BookingsAdapter(private val items: List<Booking>, private val context: Con
             when (booking.status) {
                 Booking.STATUS_ACCEPTED -> {
                     holder.statusText.text = context.getString(R.string.status_accepted)
+                    holder.statusText.setTextColor(context.getColor(R.color.statusAccepted))
+                }
+                Booking.STATUS_STARTED -> {
+                    holder.statusText.text = context.getString(R.string.status_started)
+                    holder.statusText.setTextColor(context.getColor(R.color.statusAccepted))
+                }
+                Booking.STATUS_COMPLETED -> {
+                    holder.statusText.text = context.getString(R.string.status_completed)
                     holder.statusText.setTextColor(context.getColor(R.color.statusAccepted))
                 }
                 Booking.STATUS_CANCELED -> {

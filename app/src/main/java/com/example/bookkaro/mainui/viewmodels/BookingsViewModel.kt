@@ -44,6 +44,7 @@ class BookingsViewModel(private val application: Application) : ViewModel() {
 
             val bookingsList: MutableList<Booking> = mutableListOf()
             for (doc in querySnapshot!!) {
+                Log.e(TAG, "Change occurred: ${doc.data}")
                 val status = doc.getLong(application.getString(R.string.firestore_collection_order_data_field_status))
                         ?: Booking.STATUS_PENDING
                 val shopId = doc.getString(application.getString(R.string.firestore_collection_order_data_field_accepted_shop_id))
