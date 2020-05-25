@@ -31,6 +31,10 @@
     <string name="services_by_category">Services by category</string>
     <string name="reschedule">Reschedule</string>
 
+    <string name="delivery_services">Delivery Services</string>
+    <string name="household_service">Household Services</string>
+    <string name="shop">Shop</string>
+
     <string name="rupee_symbol">₹</string>
 
     <!--START: Firebase Firestore values-->
@@ -48,6 +52,22 @@
     <string name="firestore_collection_order_data_field_shop_address" translatable="false">shopAddress</string>
     <string name="firestore_collection_order_data_field_shop_icon_url" translatable="false">shopIconUrl</string>
     <string name="firestore_collection_order_data_field_shop_name" translatable="false">shopName</string>
+
+    <string name="firestore_collection_app_data" translatable="false">AppData</string>
+    <string name="firestore_collection_app_data_doc_ads" translatable="false">Ads</string>
+    <string name="firestore_collection_app_data_doc_ads_subcollection_data" translatable="false">Data</string>
+    <string name="firestore_collection_app_data_doc_ads_subcollection_data_field_image" translatable="false">image</string>
+    <string name="firestore_collection_app_data_doc_ads_subcollection_data_field_order_in_category" translatable="false">orderInCategory</string>
+    <string name="firestore_collection_app_data_doc_categories" translatable="false">Categories</string>
+    <string name="firestore_collection_app_data_doc_categories_subcollection_data" translatable="false">Data</string>
+    <string name="firestore_collection_app_data_doc_categories_field_icon" translatable="false">categoryIcon</string>
+    <string name="firestore_collection_app_data_doc_categories_field_name" translatable="false">categoryName</string>
+    <string name="firestore_collection_app_data_doc_categories_field_order_in_category" translatable="false">orderInCategory</string>
+    <string name="firestore_collection_app_data_doc_services" translatable="false">Services</string>
+    <string name="firestore_collection_app_data_doc_services_subcollection_data" translatable="false">Data</string>
+    <string name="firestore_collection_app_data_doc_services_subcollection_data_field_icon_url" translatable="false">iconUrl</string>
+    <string name="firestore_collection_app_data_doc_services_subcollection_data_field_service_name" translatable="false">serviceName</string>
+    <string name="firestore_collection_app_data_doc_services_subcollection_data_field_service_type" translatable="false">serviceType</string>
     <!--END: Firebase Firestore values-->
 
 

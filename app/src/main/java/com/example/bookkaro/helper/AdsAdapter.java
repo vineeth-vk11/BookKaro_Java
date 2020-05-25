@@ -12,14 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.bookkaro.R;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class AdsAdapter extends RecyclerView.Adapter<AdsAdapter.AdsHolder> {
 
     Context context;
-    ArrayList<Ads> ads;
+    List<Ads> ads;
 
-    public AdsAdapter(Context c, ArrayList<Ads> a){
+    public AdsAdapter(Context c, List<Ads> a) {
         context = c;
         ads = a;
     }

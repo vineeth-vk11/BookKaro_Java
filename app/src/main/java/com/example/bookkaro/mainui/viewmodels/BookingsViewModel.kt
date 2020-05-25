@@ -12,7 +12,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 
-class FirestoreRepository(private val application: Application) {
+class BookingsRepository(private val application: Application) {
     private var firestoreDB = FirebaseFirestore.getInstance()
 
     fun getBookings(): CollectionReference {
@@ -25,7 +25,7 @@ class BookingsViewModel(private val application: Application) : ViewModel() {
 
     private val TAG = "BOOKINGS_VIEW_MODEL"
 
-    private val firestoreRepository = FirestoreRepository(application)
+    private val firestoreRepository = BookingsRepository(application)
     private var bookings: MutableLiveData<List<Booking>> = MutableLiveData()
     private val uid = FirebaseAuth.getInstance().currentUser!!.uid
 
