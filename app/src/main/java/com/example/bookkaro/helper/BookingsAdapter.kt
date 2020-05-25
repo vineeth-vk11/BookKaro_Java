@@ -13,7 +13,17 @@ import kotlinx.android.synthetic.main.list_item_booking.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-data class Booking(val docID: String, val serviceDate: Date, val serviceName: String, val servicePrice: Long, val status: Long, val shopId: String?, val shopThumbnailUrl: String?, val shopName: String?, val shopAddress: String?) {
+data class Booking(val docID: String,
+                   val acceptedShopNumber: String?,
+                   val serviceDate: Date,
+                   val serviceName: String,
+                   val servicePrice: Long,
+                   val shopAddress: String?,
+                   val shopIconUrl: String?,
+                   val shopName: String?,
+                   val status: Long,
+                   val userId: String
+) {
     companion object {
         const val STATUS_PENDING = 100L
         const val STATUS_ACCEPTED = 101L
@@ -62,7 +72,7 @@ class BookingsAdapter(private val items: List<Booking>, private val context: Con
             holder.statusText.text = context.getString(R.string.status_pending)
             holder.statusText.setTextColor(context.getColor(R.color.statusPending))
         } else {
-            Picasso.get().load(booking.shopThumbnailUrl).fit().into(holder.iconImage)
+            Picasso.get().load(booking.shopIconUrl).fit().into(holder.iconImage)
             holder.shopNameText.text = booking.shopName
             holder.shopAddressText.text = booking.shopAddress
             holder.serviceDateText.text = formatter.format(booking.serviceDate)
