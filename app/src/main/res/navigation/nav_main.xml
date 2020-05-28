@@ -8,7 +8,8 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.bookkaro.mainui.HomeFragment"
-        android:label="HomeFragment">
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_bookingsFragment"
             app:destination="@id/bookingsFragment" />
@@ -18,6 +19,9 @@
         <action
             android:id="@+id/action_homeFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_bookHouseholdServicesFragment"
+            app:destination="@id/bookHouseholdServicesFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -49,11 +53,13 @@
     <fragment
         android:id="@+id/bookingsFragment"
         android:name="com.example.bookkaro.mainui.BookingsFragment"
-        android:label="BookingsFragment" />
+        android:label="BookingsFragment"
+        tools:layout="@layout/fragment_bookings"></fragment>
     <fragment
         android:id="@+id/helpFragment"
         android:name="com.example.bookkaro.mainui.HelpFragment"
-        android:label="HelpFragment" />
+        android:label="HelpFragment"
+        tools:layout="@layout/fragment_help" />
     <fragment
         android:id="@+id/manageAddressFragment"
         android:name="com.example.bookkaro.profileoptionsui.ManageAddressFragment"
@@ -79,4 +85,14 @@
         android:name="com.example.bookkaro.profileoptionsui.TnCFragment"
         android:label="fragment_tnc"
         tools:layout="@layout/fragment_tnc" />
+    <fragment
+        android:id="@+id/bookHouseholdServicesFragment"
+        android:name="com.example.bookkaro.mainui.makebooking.BookHouseholdServicesFragment"
+        android:label="BookHouseholdServicesFragment"
+        tools:layout="@layout/book_household_services_fragment">
+
+        <argument
+            android:name="serviceData"
+            app:argType="com.example.bookkaro.helper.ServicesData" />
+    </fragment>
 </navigation>

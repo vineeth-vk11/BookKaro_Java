@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.NavController;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,10 +19,12 @@ public class ServicesGroupAdapter extends RecyclerView.Adapter<ServicesGroupAdap
 
     private Context context;
     private List<ServicesGroup> servicesList;
+    private NavController navController;
 
-    public ServicesGroupAdapter(Context context, List<ServicesGroup> servicesList) {
+    public ServicesGroupAdapter(Context context, List<ServicesGroup> servicesList, NavController navController) {
         this.context = context;
         this.servicesList = servicesList;
+        this.navController = navController;
     }
 
     @NonNull
@@ -35,11 +38,10 @@ public class ServicesGroupAdapter extends RecyclerView.Adapter<ServicesGroupAdap
     public void onBindViewHolder(@NonNull ServicesGroupHolder holder, int position) {
         holder.service_name.setText(servicesList.get(position).getHeaderTitle());
         List<ServicesData> servicesData = servicesList.get(position).getListItem();
-        ServicesItemAdapter servicesItemAdapter = new ServicesItemAdapter(context,servicesData);
+        ServicesItemAdapter servicesItemAdapter = new ServicesItemAdapter(context, servicesData, navController);
         holder.category_list.setHasFixedSize(true);
         holder.category_list.setLayoutManager(new GridLayoutManager(context,3));
         holder.category_list.setAdapter(servicesItemAdapter);
-
     }
 
     @Override
@@ -54,8 +56,6 @@ public class ServicesGroupAdapter extends RecyclerView.Adapter<ServicesGroupAdap
             super(itemView);
             service_name = itemView.findViewById(R.id.categoryName);
             category_list = itemView.findViewById(R.id.CategoryList);
-
-
         }
     }
 }

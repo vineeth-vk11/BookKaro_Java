@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bookkaro.R
@@ -47,11 +48,12 @@ class HomeFragment : Fragment() {
             }
         })
 
+        val navController = findNavController()
         viewModel.getServices().observe(viewLifecycleOwner, Observer { services ->
             if (!services.isNullOrEmpty()) {
                 binding.servicesRecycler.apply {
                     layoutManager = LinearLayoutManager(requireContext())
-                    adapter = ServicesGroupAdapter(requireContext(), services)
+                    adapter = ServicesGroupAdapter(requireContext(), services, navController)
                 }
             }
         })
