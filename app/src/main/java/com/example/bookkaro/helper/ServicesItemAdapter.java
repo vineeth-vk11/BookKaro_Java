@@ -1,7 +1,6 @@
 package com.example.bookkaro.helper;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,11 +44,37 @@ public class ServicesItemAdapter extends RecyclerView.Adapter<ServicesItemAdapte
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (data.getServiceType() == ServicesGroup.HOUSEHOLD_SERVICE) {
-                    Log.i("ServicesItemAdapter", "Current destination is: " + navController.getCurrentDestination());
+                long serviceType = data.getServiceType();
+                if (serviceType == ServicesGroup.HOUSEHOLD_SERVICE) {
                     HomeFragmentDirections.ActionHomeFragmentToBookHouseholdServicesFragment action = HomeFragmentDirections.actionHomeFragmentToBookHouseholdServicesFragment(data);
                     navController.navigate(action);
-                } //Add remaining services checks here with else if
+                } else if (serviceType == ServicesGroup.SHOP_SERVICE) {
+                    HomeFragmentDirections.ActionHomeFragmentToBookShopServiceFragment action = HomeFragmentDirections.actionHomeFragmentToBookShopServiceFragment(data);
+                    navController.navigate(action);
+                } else if (serviceType == ServicesGroup.DELIVERY_SERVICE) {
+                    switch (data.getName()) {
+                        case "Order": {
+                            HomeFragmentDirections.ActionHomeFragmentToBookDeliveryServicesOrderFragment action = HomeFragmentDirections.actionHomeFragmentToBookDeliveryServicesOrderFragment(data);
+                            navController.navigate(action);
+                            break;
+                        }
+                        case "Send packages": {
+                            HomeFragmentDirections.ActionHomeFragmentToBookDeliveryServicesSendPackageFragment action = HomeFragmentDirections.actionHomeFragmentToBookDeliveryServicesSendPackageFragment(data);
+                            navController.navigate(action);
+                            break;
+                        }
+                        case "Medicine delivery": {
+                            HomeFragmentDirections.ActionHomeFragmentToBookDeliveryServicesMedicineDeliveryFragment action = HomeFragmentDirections.actionHomeFragmentToBookDeliveryServicesMedicineDeliveryFragment(data);
+                            navController.navigate(action);
+                            break;
+                        }
+                        case "Groceries": {
+                            HomeFragmentDirections.ActionHomeFragmentToBookDeliveryServicesGroceriesFragment action = HomeFragmentDirections.actionHomeFragmentToBookDeliveryServicesGroceriesFragment(data);
+                            navController.navigate(action);
+                            break;
+                        }
+                    }
+                }
             }
         });
     }

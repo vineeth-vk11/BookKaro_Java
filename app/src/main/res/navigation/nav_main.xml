@@ -22,6 +22,21 @@
         <action
             android:id="@+id/action_homeFragment_to_bookHouseholdServicesFragment"
             app:destination="@id/bookHouseholdServicesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_bookShopServiceFragment"
+            app:destination="@id/bookShopServiceFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_bookDeliveryServicesGroceriesFragment"
+            app:destination="@id/bookDeliveryServicesGroceriesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_bookDeliveryServicesMedicineDeliveryFragment"
+            app:destination="@id/bookDeliveryServicesMedicineDeliveryFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_bookDeliveryServicesOrderFragment"
+            app:destination="@id/bookDeliveryServicesOrderFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_bookDeliveryServicesSendPackageFragment"
+            app:destination="@id/bookDeliveryServicesSendPackageFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -91,6 +106,51 @@
         android:label="BookHouseholdServicesFragment"
         tools:layout="@layout/book_household_services_fragment">
 
+        <argument
+            android:name="serviceData"
+            app:argType="com.example.bookkaro.helper.ServicesData" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookShopServiceFragment"
+        android:name="com.example.bookkaro.mainui.makebooking.BookShopServiceFragment"
+        android:label="BookShopServiceFragment"
+        tools:layout="@layout/book_shop_fragment">
+        <argument
+            android:name="serviceData"
+            app:argType="com.example.bookkaro.helper.ServicesData" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookDeliveryServicesGroceriesFragment"
+        android:name="com.example.bookkaro.mainui.makebooking.delivery.BookDeliveryServicesGroceriesFragment"
+        android:label="BookDeliveryServicesGroceriesFragment"
+        tools:layout="@layout/book_delivery_services_groceries_fragment">
+        <argument
+            android:name="serviceData"
+            app:argType="com.example.bookkaro.helper.ServicesData" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookDeliveryServicesMedicineDeliveryFragment"
+        android:name="com.example.bookkaro.mainui.makebooking.delivery.BookDeliveryServicesMedicineDeliveryFragment"
+        android:label="BookDeliveryServicesMedicineDeliveryFragment"
+        tools:layout="@layout/book_delivery_services_medicine_delivery_fragment">
+        <argument
+            android:name="serviceData"
+            app:argType="com.example.bookkaro.helper.ServicesData" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookDeliveryServicesOrderFragment"
+        android:name="com.example.bookkaro.mainui.makebooking.delivery.BookDeliveryServicesOrderFragment"
+        android:label="BookDeliveryServicesOrderFragment"
+        tools:layout="@layout/book_delivery_services_order_fragment">
+        <argument
+            android:name="serviceData"
+            app:argType="com.example.bookkaro.helper.ServicesData" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookDeliveryServicesSendPackageFragment"
+        android:name="com.example.bookkaro.mainui.makebooking.delivery.BookDeliveryServicesSendPackageFragment"
+        android:label="BookDeliveryServicesSendPackageFragment"
+        tools:layout="@layout/book_delivery_services_send_package_fragment">
         <argument
             android:name="serviceData"
             app:argType="com.example.bookkaro.helper.ServicesData" />

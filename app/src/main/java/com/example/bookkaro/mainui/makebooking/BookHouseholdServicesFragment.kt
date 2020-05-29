@@ -27,7 +27,7 @@ class BookHouseholdServicesFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(BookHouseholdServicesViewModel::class.java)
 
 
-        binding.textView.text = "Document ID: ${serviceData.docId}\nService Requested: ${serviceData.name}"
+        binding.textView.text = "Fragment: BookHouseholdServicesFragment\nDocument ID: ${serviceData.docId}\nService Requested: ${serviceData.name}"
 
 
         return binding.root
