@@ -69,7 +69,7 @@
         android:id="@+id/bookingsFragment"
         android:name="com.example.bookkaro.mainui.BookingsFragment"
         android:label="BookingsFragment"
-        tools:layout="@layout/fragment_bookings"></fragment>
+        tools:layout="@layout/fragment_bookings" />
     <fragment
         android:id="@+id/helpFragment"
         android:name="com.example.bookkaro.mainui.HelpFragment"
@@ -102,7 +102,7 @@
         tools:layout="@layout/fragment_tnc" />
     <fragment
         android:id="@+id/bookHouseholdServicesFragment"
-        android:name="com.example.bookkaro.mainui.makebooking.BookHouseholdServicesFragment"
+        android:name="com.example.bookkaro.mainui.makebooking.householdservices.BookHouseholdServicesFragment"
         android:label="BookHouseholdServicesFragment"
         tools:layout="@layout/book_household_services_fragment">
 

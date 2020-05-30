@@ -81,5 +81,18 @@
     <string name="shop_acceptance_waiting">Waiting for a shop to accept</string>
     <string name="edit">Edit</string>
     <string name="no_requested_services">You haven\'t requested any services</string>
+    <string name="how_it_works">How it works</string>
+    <string name="select_service_header">Select the type of repair</string>
+    <string name="select_service_explanation">Browse through the various packages and services</string>
+    <string name="choose_time_title">Choose your time slot</string>
+    <string name="choose_time_explanation">Pick a time as per your convenience</string>
+    <string name="hassle_free_service_title">Hassle free service</string>
+    <string name="hassle_free_service_explanation">Our professionals will get in touch with you an hour before the service</string>
+    <string name="select_packages">Select packages</string>
+    <string name="select_services">Select services</string>
+    <string name="content_dsc_reviewers_dp">Reviewer\'s profile picture</string>
+    <string name="content_dsc_step_one">Step one</string>
+    <string name="content_dsc_step_two">Step two</string>
+    <string name="content_dsc_step_three">Step three</string>
 
 </resources>

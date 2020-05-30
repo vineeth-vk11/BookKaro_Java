@@ -21,6 +21,9 @@
     <color name="colorTextHeader">#000000</color>
     <color name="colorLogout">#FF0000</color>
 
+    <color name="colorDivider">#333333</color>
+    <color name="colorCardBorder">#BDBDBD</color>
+
     <color name="statusPending">#828282</color>
     <color name="statusAccepted">#1B8700</color>
     <color name="statusCanceled">#d32f2f</color>
