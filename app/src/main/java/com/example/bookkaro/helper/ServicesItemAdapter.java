@@ -73,6 +73,7 @@ public class ServicesItemAdapter extends RecyclerView.Adapter<ServicesItemAdapte
                             navController.navigate(action);
                             break;
                         }
+
                     }
                 }
             }
