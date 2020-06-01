@@ -122,20 +122,12 @@
     <fragment
         android:id="@+id/bookDeliveryServicesGroceriesFragment"
         android:name="com.example.bookkaro.mainui.makebooking.delivery.BookDeliveryServicesGroceriesFragment"
-        android:label="BookDeliveryServicesGroceriesFragment"
-        tools:layout="@layout/book_delivery_services_groceries_fragment">
-        <argument
-            android:name="serviceData"
-            app:argType="com.example.bookkaro.helper.ServicesData" />
+        android:label="BookDeliveryServicesGroceriesFragment">
     </fragment>
     <fragment
         android:id="@+id/bookDeliveryServicesMedicineDeliveryFragment"
         android:name="com.example.bookkaro.mainui.makebooking.delivery.BookDeliveryServicesMedicineDeliveryFragment"
-        android:label="BookDeliveryServicesMedicineDeliveryFragment"
-        tools:layout="@layout/book_delivery_services_medicine_delivery_fragment">
-        <argument
-            android:name="serviceData"
-            app:argType="com.example.bookkaro.helper.ServicesData" />
+        android:label="BookDeliveryServicesMedicineDeliveryFragment">
     </fragment>
     <fragment
         android:id="@+id/bookDeliveryServicesOrderFragment"
