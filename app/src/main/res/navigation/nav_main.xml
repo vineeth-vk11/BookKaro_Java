@@ -26,12 +26,6 @@
             android:id="@+id/action_homeFragment_to_bookShopServiceFragment"
             app:destination="@id/bookShopServiceFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_bookDeliveryServicesGroceriesFragment"
-            app:destination="@id/bookDeliveryServicesGroceriesFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_bookDeliveryServicesMedicineDeliveryFragment"
-            app:destination="@id/bookDeliveryServicesMedicineDeliveryFragment" />
-        <action
             android:id="@+id/action_homeFragment_to_bookDeliveryServicesOrderFragment"
             app:destination="@id/bookDeliveryServicesOrderFragment" />
         <action
@@ -112,22 +106,15 @@
     </fragment>
     <fragment
         android:id="@+id/bookShopServiceFragment"
-        android:name="com.example.bookkaro.mainui.makebooking.BookShopServiceFragment"
+        android:name="com.example.bookkaro.mainui.makebooking.shops.SelectShopFragment"
         android:label="BookShopServiceFragment"
-        tools:layout="@layout/book_shop_fragment">
+        tools:layout="@layout/select_shop_fragment">
         <argument
-            android:name="serviceData"
-            app:argType="com.example.bookkaro.helper.ServicesData" />
-    </fragment>
-    <fragment
-        android:id="@+id/bookDeliveryServicesGroceriesFragment"
-        android:name="com.example.bookkaro.mainui.makebooking.delivery.BookDeliveryServicesGroceriesFragment"
-        android:label="BookDeliveryServicesGroceriesFragment">
-    </fragment>
-    <fragment
-        android:id="@+id/bookDeliveryServicesMedicineDeliveryFragment"
-        android:name="com.example.bookkaro.mainui.makebooking.delivery.BookDeliveryServicesMedicineDeliveryFragment"
-        android:label="BookDeliveryServicesMedicineDeliveryFragment">
+            android:name="shopType"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_bookShopServiceFragment_to_selectItemsFragment"
+            app:destination="@id/selectItemsFragment" />
     </fragment>
     <fragment
         android:id="@+id/bookDeliveryServicesOrderFragment"
@@ -146,5 +133,14 @@
         <argument
             android:name="serviceData"
             app:argType="com.example.bookkaro.helper.ServicesData" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectItemsFragment"
+        android:name="com.example.bookkaro.mainui.makebooking.shops.SelectItemsFragment"
+        android:label="SelectItemsFragment"
+        tools:layout="@layout/fragment_select_items">
+        <argument
+            android:name="shopId"
+            app:argType="string" />
     </fragment>
 </navigation>

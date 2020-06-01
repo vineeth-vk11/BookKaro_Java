@@ -68,6 +68,17 @@
     <string name="firestore_collection_app_data_doc_services_subcollection_data_field_icon_url" translatable="false">iconUrl</string>
     <string name="firestore_collection_app_data_doc_services_subcollection_data_field_service_name" translatable="false">serviceName</string>
     <string name="firestore_collection_app_data_doc_services_subcollection_data_field_service_type" translatable="false">serviceType</string>
+
+    <string name="firestore_collection_shop_data" translatable="false">ShopData</string>
+    <string name="firestore_collection_shop_data_field_shop_type" translatable="false">shopType</string>
+    <string name="firestore_collection_shop_data_field_shop_name" translatable="false">shopName</string>
+    <string name="firestore_collection_shop_data_field_shop_icon_url" translatable="false">shopIconUrl</string>
+    <string name="firestore_collection_shop_data_field_shop_address" translatable="false">shopAddress</string>
+    <string name="firestore_collection_shop_data_subcollection_items" translatable="false">Items</string>
+    <string name="firestore_collection_shop_data_subcollection_items_field_item_name" translatable="false">itemName</string>
+    <string name="firestore_collection_shop_data_subcollection_items_field_item_price" translatable="false">itemPrice</string>
+    <string name="firestore_collection_shop_data_subcollection_items_field_item_icon_url" translatable="false">itemIconUrl</string>
+    <string name="firestore_collection_shop_data_subcollection_items_field_item_description" translatable="false">itemDescription</string>
     <!--END: Firebase Firestore values-->
 
 
@@ -94,5 +105,11 @@
     <string name="content_dsc_step_one">Step one</string>
     <string name="content_dsc_step_two">Step two</string>
     <string name="content_dsc_step_three">Step three</string>
+    <string name="select_shop">Select a shop</string>
+    <string name="no_shops">No shops are available currently</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="select_items">Select items</string>
+    <string name="no_items">No items</string>
 
 </resources>

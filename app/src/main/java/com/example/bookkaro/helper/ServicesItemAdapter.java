@@ -49,7 +49,19 @@ public class ServicesItemAdapter extends RecyclerView.Adapter<ServicesItemAdapte
                     HomeFragmentDirections.ActionHomeFragmentToBookHouseholdServicesFragment action = HomeFragmentDirections.actionHomeFragmentToBookHouseholdServicesFragment(data);
                     navController.navigate(action);
                 } else if (serviceType == ServicesGroup.SHOP_SERVICE) {
-                    HomeFragmentDirections.ActionHomeFragmentToBookShopServiceFragment action = HomeFragmentDirections.actionHomeFragmentToBookShopServiceFragment(data);
+                    long type = Shop.SHOP_TYPE_GENERAL;
+                    switch (data.getName()) {
+                        case "General store":
+                            type = Shop.SHOP_TYPE_GENERAL;
+                            break;
+                        case "Beauty store":
+                            type = Shop.SHOP_TYPE_BEAUTY;
+                            break;
+                        case "Clothing store":
+                            type = Shop.SHOP_TYPE_CLOTHING;
+                            break;
+                    }
+                    HomeFragmentDirections.ActionHomeFragmentToBookShopServiceFragment action = HomeFragmentDirections.actionHomeFragmentToBookShopServiceFragment(type);
                     navController.navigate(action);
                 } else if (serviceType == ServicesGroup.DELIVERY_SERVICE) {
                     switch (data.getName()) {
