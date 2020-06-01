@@ -63,16 +63,7 @@ public class ServicesItemAdapter extends RecyclerView.Adapter<ServicesItemAdapte
                             navController.navigate(action);
                             break;
                         }
-                        case "Medicine delivery": {
-                            HomeFragmentDirections.ActionHomeFragmentToBookDeliveryServicesMedicineDeliveryFragment action = HomeFragmentDirections.actionHomeFragmentToBookDeliveryServicesMedicineDeliveryFragment(data);
-                            navController.navigate(action);
-                            break;
-                        }
-                        case "Groceries": {
-                            HomeFragmentDirections.ActionHomeFragmentToBookDeliveryServicesGroceriesFragment action = HomeFragmentDirections.actionHomeFragmentToBookDeliveryServicesGroceriesFragment(data);
-                            navController.navigate(action);
-                            break;
-                        }
+
                     }
                 }
             }
