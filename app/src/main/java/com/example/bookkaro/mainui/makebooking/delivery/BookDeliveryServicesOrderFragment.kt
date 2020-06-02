@@ -13,6 +13,8 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bookkaro.R
 import com.example.bookkaro.databinding.BookDeliveryServicesOrderFragmentBinding
+import com.example.bookkaro.helper.Order
+import com.example.bookkaro.helper.listItemsAdapter
 import kotlinx.android.synthetic.main.book_delivery_services_order_fragment.*
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -40,21 +42,16 @@ class BookDeliveryServicesOrderFragment : Fragment() {
         val dropDownAdapter:ArrayAdapter<String> = ArrayAdapter(requireContext(),R.layout.list_item,items)
         dropDownText.setAdapter(dropDownAdapter)
 
+        val list = mutableListOf<Order>()
+        for (i in 0..2)
+        {
+            list.add(Order("item 1"))
+        }
 
-
-
-//        val list = mutableListOf<order_list_of_items>()
-//        for (i in 0..4){
-//            list.add(order_list_of_items("item 1"))
-//        }
-//
-//        binding.listOfItemsRecyclerView.apply {
-//            layoutManager=LinearLayoutManager(requireContext())
-//            adapter= listItemsAdapter(list)
-//        }
-
-
-
+        binding.listOfItemsRecyclerView?.apply {
+            layoutManager=LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
+            adapter= listItemsAdapter(list)
+        }
         return binding.root
     }
 
