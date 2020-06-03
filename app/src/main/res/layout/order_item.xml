@@ -11,6 +11,8 @@
         android:fontFamily="@font/poppins_bold"
         android:textSize="20sp"
         android:layout_marginStart="8dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
