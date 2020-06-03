@@ -79,6 +79,7 @@ class ShopViewModel(private val application: Application) : ViewModel() {
                                 )
                 ))
             }
+            itemsList.sortBy { it.values.elementAt(0).category }
             shopItems.value = itemsList
         }
         return shopItems
