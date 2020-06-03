@@ -26,7 +26,6 @@ class BookDeliveryServicesSendPackageFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(BookDeliveryServicesSendPackageViewModel::class.java)
 
-        binding.textView.text = "Fragment: BookDeliveryServicesSendPackageFragment\nDocument ID: ${serviceData.docId}\nService Requested: ${serviceData.name}"
 
         return binding.root
     }

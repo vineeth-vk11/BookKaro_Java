@@ -111,5 +111,28 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="select_items">Select items</string>
     <string name="no_items">No items</string>
+    <string name="order_from_any_store">Order from any store</string>
+    <string name="category">Category</string>
+    <string name="list_of_items">List of Items</string>
+    <string name="select_store_address">Select Store address</string>
+    <string name="select_your_address_1">Select your address.</string>
+    <string name="delivery_address_1">Delivery address</string>
+    <string name="select_your_address_2">Select your address.</string>
+    <string name="estimated_total">Estimated total</string>
+    <string name="_100">₹100</string>
+    <string name="instructions_if_any_1">Instructions if any</string>
+    <string name="add_your_instructions_over_here">Add your instructions over here.</string>
+    <string name="next_2">NEXT</string>
+    <string name="send_packages">Send packages</string>
+    <string name="select_pickup_address">Select pickup address</string>
+    <string name="select_your_address_3">Select your address.</string>
+    <string name="delivery_address">Delivery address</string>
+    <string name="select_your_address">Select your address.</string>
+    <string name="enter_the_package_contents_1">Enter the package contents</string>
+    <string name="enter_the_package_contents_2">Enter the package contents</string>
+    <string name="instructions_if_any">Instructions if any</string>
+    <string name="add_your_additional_instructions_over_here">Add your additional instructions over here.</string>
+    <string name="next_3">NEXT</string>
+    <string name="item_1">item 1</string>
 
 </resources>
