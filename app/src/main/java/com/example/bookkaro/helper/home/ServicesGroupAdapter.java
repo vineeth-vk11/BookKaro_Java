@@ -1,4 +1,4 @@
-package com.example.bookkaro.helper;
+package com.example.bookkaro.helper.home;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bookkaro.R;
+import com.example.bookkaro.helper.ServicesData;
+import com.example.bookkaro.helper.ServicesGroup;
 
 import java.util.List;
 

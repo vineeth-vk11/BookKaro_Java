@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bookkaro.R
 import com.example.bookkaro.databinding.FragmentBookingsBinding
-import com.example.bookkaro.helper.BookingsAdapter
+import com.example.bookkaro.helper.bookings.BookingsAdapter
 import com.example.bookkaro.mainui.viewmodels.BookingsViewModel
 import com.example.bookkaro.mainui.viewmodels.BookingsViewModelFactory
 

@@ -82,7 +82,7 @@ class LoginValidateOTPFragment : Fragment() {
             }
 
             override fun onFinish() {
-                setRequestAgain()
+                //setRequestAgain()
             }
         }.start()
 

@@ -13,10 +13,8 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bookkaro.R
 import com.example.bookkaro.databinding.BookDeliveryServicesOrderFragmentBinding
-import com.example.bookkaro.helper.Order
-import com.example.bookkaro.helper.listItemsAdapter
-import kotlinx.android.synthetic.main.book_delivery_services_order_fragment.*
-import kotlinx.android.synthetic.main.toolbar.*
+import com.example.bookkaro.helper.bookings.Order
+import com.example.bookkaro.helper.home.listItemsAdapter
 
 
 class BookDeliveryServicesOrderFragment : Fragment() {

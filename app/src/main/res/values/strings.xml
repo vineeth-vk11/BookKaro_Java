@@ -79,6 +79,7 @@
     <string name="firestore_collection_shop_data_subcollection_items_field_item_price" translatable="false">itemPrice</string>
     <string name="firestore_collection_shop_data_subcollection_items_field_item_icon_url" translatable="false">itemIconUrl</string>
     <string name="firestore_collection_shop_data_subcollection_items_field_item_description" translatable="false">itemDescription</string>
+    <string name="firestore_collection_shop_data_subcollection_items_field_item_category" translatable="false">itemCategory</string>
     <!--END: Firebase Firestore values-->
 
 

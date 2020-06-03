@@ -11,8 +11,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bookkaro.R
 import com.example.bookkaro.databinding.CustomerReviewsFragmentBinding
-import com.example.bookkaro.helper.ReviewAdapter
 import com.example.bookkaro.helper.ServicesData
+import com.example.bookkaro.helper.bookings.ReviewAdapter
 import com.example.bookkaro.mainui.makebooking.householdservices.BookHouseholdServicesViewModel
 import com.example.bookkaro.mainui.makebooking.householdservices.BookHouseholdServicesViewModelFactory
 

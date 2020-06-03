@@ -13,7 +13,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bookkaro.R
 import com.example.bookkaro.databinding.SelectShopFragmentBinding
-import com.example.bookkaro.helper.ShopAdapter
+import com.example.bookkaro.helper.shop.ShopAdapter
 
 class SelectShopFragment : Fragment() {
 

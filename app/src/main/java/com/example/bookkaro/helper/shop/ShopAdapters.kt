@@ -1,4 +1,4 @@
-package com.example.bookkaro.helper
+package com.example.bookkaro.helper.shop
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -51,7 +51,7 @@ class ShopAdapter(private val items: List<Shop>, private val context: Context, p
 
 }
 
-class ShopItemAdapter(private val items: List<ShopItem>, private val context: Context) : RecyclerView.Adapter<ShopItemViewHolder>() {
+class ShopItemAdapter(private val items: List<Map<String, ShopItem>>, private val context: Context) : RecyclerView.Adapter<ShopItemViewHolder>() {
 
     override fun getItemCount(): Int {
         return items.size
@@ -62,7 +62,7 @@ class ShopItemAdapter(private val items: List<ShopItem>, private val context: Co
     }
 
     override fun onBindViewHolder(holder: ShopItemViewHolder, position: Int) {
-        val item = items[position]
+        val item = items[position].values.elementAt(0)
         val priceText = "${context.getString(R.string.rupee_symbol)}${item.price}"
         Picasso.get().load(item.iconUrl).fit().into(holder.imageIcon)
         holder.textName.text = item.name

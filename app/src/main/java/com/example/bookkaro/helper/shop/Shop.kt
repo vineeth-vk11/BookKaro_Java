@@ -1,4 +1,4 @@
-package com.example.bookkaro.helper
+package com.example.bookkaro.helper.shop
 
 data class Shop(
         val docId: String,
@@ -19,5 +19,6 @@ data class ShopItem(
         val name: String,
         val price: Long,
         val iconUrl: String,
-        val description: String
+        val description: String,
+        val category: String
 )

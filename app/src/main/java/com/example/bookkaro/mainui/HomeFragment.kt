@@ -13,9 +13,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bookkaro.R
 import com.example.bookkaro.databinding.FragmentHomeBinding
-import com.example.bookkaro.helper.AdsAdapter
-import com.example.bookkaro.helper.CategoryAdapter
-import com.example.bookkaro.helper.ServicesGroupAdapter
+import com.example.bookkaro.helper.home.AdsAdapter
+import com.example.bookkaro.helper.home.CategoryAdapter
+import com.example.bookkaro.helper.home.ServicesGroupAdapter
 import com.example.bookkaro.mainui.viewmodels.HomeViewModel
 import com.example.bookkaro.mainui.viewmodels.HomeViewModelFactory
 

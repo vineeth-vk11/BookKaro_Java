@@ -12,7 +12,9 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bookkaro.R
 import com.example.bookkaro.databinding.FragmentSelectItemsBinding
-import com.example.bookkaro.helper.ShopItemAdapter
+import com.example.bookkaro.helper.shop.ShopCategoryDecoration
+import com.example.bookkaro.helper.shop.ShopItem
+import com.example.bookkaro.helper.shop.ShopItemAdapter
 
 
 class SelectItemsFragment : Fragment() {
@@ -36,13 +38,27 @@ class SelectItemsFragment : Fragment() {
             else {
                 setItemsExist()
                 binding.itemsRecycler.apply {
+                    val decoration = ShopCategoryDecoration(requireContext(), resources.getDimensionPixelSize(R.dimen.header_height), getSectionCallback(items)!!)
                     layoutManager = LinearLayoutManager(requireContext())
                     adapter = ShopItemAdapter(items, requireContext())
+                    addItemDecoration(decoration)
                 }
             }
         })
 
         return binding.root
+    }
+
+    private fun getSectionCallback(list: List<Map<String, ShopItem>>): ShopCategoryDecoration.SectionCallback? {
+        return object : ShopCategoryDecoration.SectionCallback {
+            override fun isSectionHeader(pos: Int): Boolean {
+                return pos == 0 || list[pos].keys.elementAt(0) != list[pos - 1].keys.elementAt(0)
+            }
+
+            override fun getSectionHeaderName(pos: Int): String {
+                return list[pos].keys.elementAt(0)
+            }
+        }
     }
 
     private fun setNoItems() {

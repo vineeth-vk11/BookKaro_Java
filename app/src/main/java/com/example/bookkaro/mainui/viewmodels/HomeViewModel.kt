@@ -7,10 +7,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.bookkaro.R
-import com.example.bookkaro.helper.Ads
-import com.example.bookkaro.helper.Category
 import com.example.bookkaro.helper.ServicesData
 import com.example.bookkaro.helper.ServicesGroup
+import com.example.bookkaro.helper.home.Ads
+import com.example.bookkaro.helper.home.Category
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 

@@ -1,4 +1,4 @@
-package com.example.bookkaro.helper;
+package com.example.bookkaro.helper.home;
 
 public class Category {
     private String categoryName;
