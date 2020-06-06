@@ -169,8 +169,10 @@
                 android:layout_marginTop="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/how_works_header2"
+                app:layout_constraintVertical_bias="0.0"
                 tools:listitem="@layout/list_item_service_or_package" />
 
             <View

@@ -13,7 +13,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bookkaro.R
 import com.example.bookkaro.databinding.BookDeliveryServicesOrderFragmentBinding
-import com.example.bookkaro.helper.bookings.Order
+import com.example.bookkaro.helper.home.Order
 import com.example.bookkaro.helper.home.listItemsAdapter
 
 

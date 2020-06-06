@@ -136,5 +136,13 @@
     <string name="next_3">NEXT</string>
     <string name="item_1">item 1</string>
     <string name="quantity_add">ADD</string>
+    <string name="my_cart">My Cart</string>
+    <string name="change">Change</string>
+    <string name="apply">APPLY</string>
+    <string name="subtotal">Subtotal</string>
+    <string name="discount">Discount</string>
+    <string name="extra_charges">Extra Charges??</string>
+    <string name="total">Total</string>
+    <string name="proceed_to_pay">PROCEED TO PAY</string>
 
 </resources>

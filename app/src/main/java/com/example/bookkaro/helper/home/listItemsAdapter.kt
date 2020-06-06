@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bookkaro.R
-import com.example.bookkaro.helper.bookings.Order
 import kotlinx.android.synthetic.main.order_item.view.*
 
 class listItemsAdapter(private val list: MutableList<Order>) : RecyclerView.Adapter<listItemsAdapter.ViewHolder>() {

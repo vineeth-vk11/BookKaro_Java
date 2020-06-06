@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/card_bg"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite">
+
+            <TextView
+                android:id="@+id/cart_item_name_text"
+                style="@style/TextHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/item_price_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed"
+                tools:text="Tv Repair" />
+
+            <TextView
+                android:id="@+id/cart_item_price"
+                style="@style/TextHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="start"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/cart_item_name_text"
+                app:layout_constraintStart_toStartOf="@+id/cart_item_name_text"
+                app:layout_constraintTop_toBottomOf="@id/cart_item_name_text"
+                tools:text="₹ 399" />
+
+
+            <ImageView
+                android:id="@+id/quantity_inidicator_bg_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_quantity_indicator_bg" />
+
+            <ImageView
+                android:id="@+id/quantity_indicator_postitive_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/quantity_inidicator_bg_2"
+                app:layout_constraintTop_toTopOf="@+id/quantity_inidicator_bg_2"
+                app:srcCompat="@drawable/ic_quantity_indicator_positive" />
+
+            <ImageView
+                tools:visibility="gone"
+                android:visibility="gone"
+                android:id="@+id/quantity_indicator_negative_2"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                app:layout_constraintStart_toStartOf="@+id/quantity_inidicator_bg_2"
+                app:layout_constraintTop_toTopOf="@+id/quantity_inidicator_bg_2"
+                app:srcCompat="@drawable/ic_quantity_indicator_negative" />
+
+            <TextView
+                android:id="@+id/quantity_indicator_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ADD"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="@+id/quantity_inidicator_bg_2"
+                app:layout_constraintEnd_toStartOf="@+id/quantity_indicator_postitive_2"
+                app:layout_constraintStart_toEndOf="@+id/quantity_indicator_negative_2"
+                app:layout_constraintTop_toTopOf="@+id/quantity_inidicator_bg_2" />
+
+            <View
+                android:id="@+id/cart_item_divider1"
+                android:layout_width="0dp"
+                android:layout_height="5dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintTop_toBottomOf="@id/cart_item_price"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@color/colorFragmentBackground"/>
+            <View
+                android:id="@+id/cart_item_divider2"
+                android:layout_width="5dp"
+                android:layout_height="32dp"
+                android:background="@color/colorFragmentBackground"
+                app:layout_constraintTop_toBottomOf="@id/cart_item_divider1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <ImageView
+                android:id="@+id/cart_remove"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="4dp"
+                android:background="#FFFFFF"
+                android:src="@drawable/ic_remove"
+                app:layout_constraintStart_toStartOf="@id/cart_item_divider2"
+                app:layout_constraintTop_toBottomOf="@id/cart_item_divider1" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="#5B5D52"
+                app:layout_constraintTop_toBottomOf="@id/cart_item_divider1"
+                app:layout_constraintStart_toEndOf="@id/cart_remove"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="8dp"
+                tools:text="Remove"/>
+
+                
+                
+                
+                
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
