@@ -135,5 +135,6 @@
     <string name="add_your_additional_instructions_over_here">Add your additional instructions over here.</string>
     <string name="next_3">NEXT</string>
     <string name="item_1">item 1</string>
+    <string name="quantity_add">ADD</string>
 
 </resources>
