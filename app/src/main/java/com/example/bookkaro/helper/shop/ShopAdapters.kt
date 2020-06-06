@@ -25,6 +25,9 @@ class ShopItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val textPrice: TextView = view.item_price_text
     val textDesc: TextView = view.item_desc_text
     val imageIcon: ImageView = view.item_image
+    val quantityIndicatorPositive: ImageView = view.quantity_indicator_postitive
+    val quantityIndicatorNegative: ImageView = view.quantity_indicator_negative
+    val quantityIndicatorNumber: TextView = view.quantity_indicator_number
 
 }
 
@@ -68,6 +71,28 @@ class ShopItemAdapter(private val items: List<Map<String, ShopItem>>, private va
         holder.textName.text = item.name
         holder.textPrice.text = priceText
         holder.textDesc.text = item.description
+
+        holder.quantityIndicatorPositive.setOnClickListener {
+            if(holder.quantityIndicatorNumber.text == context.resources.getString(R.string.quantity_add)){
+                holder.quantityIndicatorNumber.text = "1"
+                holder.quantityIndicatorNegative.visibility = View.VISIBLE
+            }else{
+                //TODO:Update the Quantity over here (Increment)
+                holder.quantityIndicatorNumber.text = "${holder.quantityIndicatorNumber.text.toString().toInt() + 1}"
+
+            }
+        }
+
+        holder.quantityIndicatorNegative.setOnClickListener {
+            if(holder.quantityIndicatorNumber.text == "1"){
+                //TODO: Deselect the item i.e add code to make quantity 0 here.
+                holder.quantityIndicatorNumber.text = context.resources.getString(R.string.quantity_add)
+                holder.quantityIndicatorNegative.visibility = View.GONE
+            }else{
+                //TODO:Decrement the quantity over here
+                holder.quantityIndicatorNumber.text = "${holder.quantityIndicatorNumber.text.toString().toInt() - 1}"
+            }
+        }
     }
 
 }

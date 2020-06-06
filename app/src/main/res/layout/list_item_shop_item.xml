@@ -72,6 +72,45 @@
                 app:layout_constraintTop_toBottomOf="@+id/item_image"
                 tools:text="Description for rice" />
 
+            <ImageView
+                android:id="@+id/quantity_inidicator_bg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_quantity_indicator_bg" />
+
+            <ImageView
+                android:id="@+id/quantity_indicator_postitive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/quantity_inidicator_bg"
+                app:layout_constraintTop_toTopOf="@+id/quantity_inidicator_bg"
+                app:srcCompat="@drawable/ic_quantity_indicator_positive" />
+
+            <ImageView
+                tools:visibility="gone"
+                android:visibility="gone"
+                android:id="@+id/quantity_indicator_negative"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                app:layout_constraintStart_toStartOf="@+id/quantity_inidicator_bg"
+                app:layout_constraintTop_toTopOf="@+id/quantity_inidicator_bg"
+                app:srcCompat="@drawable/ic_quantity_indicator_negative" />
+
+            <TextView
+                android:id="@+id/quantity_indicator_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ADD"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toBottomOf="@+id/quantity_inidicator_bg"
+                app:layout_constraintEnd_toStartOf="@+id/quantity_indicator_postitive"
+                app:layout_constraintStart_toEndOf="@+id/quantity_indicator_negative"
+                app:layout_constraintTop_toTopOf="@+id/quantity_inidicator_bg" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
