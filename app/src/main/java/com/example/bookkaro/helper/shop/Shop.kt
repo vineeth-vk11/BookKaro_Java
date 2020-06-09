@@ -15,6 +15,7 @@ data class Shop(
 }
 
 data class ShopItem(
+        val shpoDocId: String,
         val docId: String,
         val name: String,
         val price: Long,

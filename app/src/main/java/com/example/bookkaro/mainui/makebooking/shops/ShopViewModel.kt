@@ -70,7 +70,8 @@ class ShopViewModel(private val application: Application) : ViewModel() {
                 val category = doc.getString(application.getString(R.string.firestore_collection_shop_data_subcollection_items_field_item_category))!!
                 itemsList.add(mapOf(
                         category to
-                                ShopItem(doc.id,
+                                ShopItem(shopId,
+                                        doc.id,
                                         doc.getString(application.getString(R.string.firestore_collection_shop_data_subcollection_items_field_item_name))!!,
                                         doc.getLong(application.getString(R.string.firestore_collection_shop_data_subcollection_items_field_item_price))!!,
                                         doc.getString(application.getString(R.string.firestore_collection_shop_data_subcollection_items_field_item_icon_url))!!,
