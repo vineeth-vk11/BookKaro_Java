@@ -15,11 +15,17 @@ data class Shop(
 }
 
 data class ShopItem(
-        val shpoDocId: String,
+        val shopDocId: String,
         val docId: String,
         val name: String,
         val price: Long,
         val iconUrl: String,
         val description: String,
         val category: String
+)
+
+data class ItemQuantity(
+        val shopItem: String,
+        val shopDocId: String,
+        var quantity: Int
 )

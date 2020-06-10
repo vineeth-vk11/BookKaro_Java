@@ -54,13 +54,19 @@ class ShopAdapter(private val items: List<Shop>, private val context: Context, p
 
 }
 
-class ShopItemAdapter(private val items: List<Map<String, ShopItem>>, private val context: Context) : RecyclerView.Adapter<ShopItemViewHolder>() {
+class ShopItemAdapter(private val items: List<Map<String, ShopItem>>, private val context: Context,
+                      private val listener: (ShopItem,Int) -> Unit) : RecyclerView.Adapter<ShopItemViewHolder>() {
+
+    private lateinit var shopUtils: ShopUtils
+    private lateinit var storedQuantity: List<ItemQuantity>
 
     override fun getItemCount(): Int {
         return items.size
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShopItemViewHolder {
+        shopUtils = ShopUtils(context)
+        storedQuantity = shopUtils.fetchQuantityItems()
         return ShopItemViewHolder(LayoutInflater.from(context).inflate(R.layout.list_item_shop_item, parent, false))
     }
 
@@ -72,24 +78,33 @@ class ShopItemAdapter(private val items: List<Map<String, ShopItem>>, private va
         holder.textPrice.text = priceText
         holder.textDesc.text = item.description
 
+        storedQuantity.forEach {
+            if(it.shopDocId == item.shopDocId && it.shopItem == item.docId){
+                holder.quantityIndicatorNumber.text = "${it.quantity}"
+                holder.quantityIndicatorNegative.visibility = View.VISIBLE
+            }
+        }
+
         holder.quantityIndicatorPositive.setOnClickListener {
             if(holder.quantityIndicatorNumber.text == context.resources.getString(R.string.quantity_add)){
+                listener(item,1)
                 holder.quantityIndicatorNumber.text = "1"
                 holder.quantityIndicatorNegative.visibility = View.VISIBLE
             }else{
-                //TODO:Update the Quantity over here (Increment)
+                listener(item,holder.quantityIndicatorNumber.text.toString().toInt() + 1)
                 holder.quantityIndicatorNumber.text = "${holder.quantityIndicatorNumber.text.toString().toInt() + 1}"
 
             }
+
         }
 
         holder.quantityIndicatorNegative.setOnClickListener {
             if(holder.quantityIndicatorNumber.text == "1"){
-                //TODO: Deselect the item i.e add code to make quantity 0 here.
+                listener(item,0)
                 holder.quantityIndicatorNumber.text = context.resources.getString(R.string.quantity_add)
                 holder.quantityIndicatorNegative.visibility = View.GONE
             }else{
-                //TODO:Decrement the quantity over here
+                listener(item,holder.quantityIndicatorNumber.text.toString().toInt() - 1)
                 holder.quantityIndicatorNumber.text = "${holder.quantityIndicatorNumber.text.toString().toInt() - 1}"
             }
         }
