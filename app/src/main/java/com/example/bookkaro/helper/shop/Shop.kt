@@ -24,8 +24,10 @@ data class ShopItem(
         val category: String
 )
 
-data class ItemQuantity(
-        val shopItem: String,
+data class CartItem(
+        val shopItemId: String,
         val shopDocId: String,
+        val itemName: String,
+        val itemPrice: Long,
         var quantity: Int
 )

@@ -3,7 +3,6 @@ package com.example.bookkaro.helper.shop
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Rect
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -65,7 +64,6 @@ class ShopCategoryDecoration(private val context: Context, private val headerHei
     }
 
     private fun inflateHeader(recyclerView: RecyclerView): View {
-        Log.i("TAG", "Inflated header")
         return LayoutInflater.from(context).inflate(R.layout.list_item_header, recyclerView, false)
     }
 

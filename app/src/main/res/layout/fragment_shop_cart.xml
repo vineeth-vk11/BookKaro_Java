@@ -8,117 +8,100 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cart_constraint1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
             <TextView
-            android:id="@+id/select_shop_header_text"
-            style="@style/TextToolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:textAllCaps="false"
-            android:text="@string/my_cart"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/cart_constraint1"
-        app:layout_constraintBottom_toTopOf="@id/proceed_to_pay_button">
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cart_constraint4"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="50dp"
-            app:layout_constraintBottom_toTopOf="@id/proceed_to_pay_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cart_constraint1"
-            app:layout_constraintVertical_bias="0.0">
-
-            <TextView
-                android:id="@+id/cart_location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/poppins_bold"
-                tools:text="Dadar,Mumbai"
-                android:textColor="@color/colorBlack"
-                android:textSize="16sp"
-                app:layout_constraintStart_toEndOf="@+id/cart_location_image"
+                android:id="@+id/select_shop_header_text"
+                style="@style/TextToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:text="@string/my_cart"
+                android:textAllCaps="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/cart_location_image"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="16dp"
-                android:src="@drawable/ic_location_on_a_light_bg"
-                app:layout_constraintBottom_toBottomOf="@+id/cart_location"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/cart_location" />
 
-            <Button
-                style="?attr/materialButtonOutlinedStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:text="@string/change"
-                android:textAllCaps="false"
-                app:layout_constraintBottom_toBottomOf="@+id/cart_location"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/cart_location" />
+        <TextView
+            android:id="@+id/cart_location"
+            style="@style/TextHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/materialButton"
+            app:layout_constraintStart_toEndOf="@+id/cart_location_image"
+            tools:text="Dadar,Mumbai" />
 
-            <View
-                android:id="@+id/cart_divider1"
-                android:layout_width="0dp"
-                android:layout_height="5dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
-                android:background="@color/colorFragmentBackground"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cart_location" />
+        <ImageView
+            android:id="@+id/cart_location_image"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_location_on_a_light_bg"
+            app:layout_constraintBottom_toBottomOf="@+id/cart_location"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/cart_location" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/cart_recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="12dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cart_divider1"
-                tools:listitem="@layout/list_item_cart" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/materialButton"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/change"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/select_shop_header_text" />
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/coupon_code"
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorWhite"
-                app:layout_constraintTop_toBottomOf="@id/cart_recyclerView"
-                app:strokeColor="@color/colorBlack"
-                app:strokeWidth="2dp">
+        <View
+            android:id="@+id/cart_divider1"
+            android:layout_width="0dp"
+            android:layout_height="4dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorFragmentBackground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialButton" />
 
-              <androidx.constraintlayout.widget.ConstraintLayout
+        <View
+            android:id="@+id/cart_divider"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/colorFragmentBackground"
+            app:layout_constraintBottom_toTopOf="@+id/coupon_code"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cart_recyclerView" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/cart_recyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/colorFragmentBackground"
+            app:layout_constraintBottom_toTopOf="@+id/coupon_code"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cart_divider1"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/coupon_code"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/colorWhite"
+            app:layout_constraintBottom_toTopOf="@+id/cart_divider3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:strokeColor="@color/colorBlack"
+            app:strokeWidth="1dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cart_constraint2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -126,169 +109,149 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    tools:text="Have a coupon code?"
-                    app:layout_constraintStart_toEndOf="@id/coupon_code_img"
                     android:layout_marginStart="8dp"
-                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="@string/coupon_code_prompt"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    android:padding="8dp"/>
+                    app:layout_constraintStart_toEndOf="@id/coupon_code_img"
+                    app:layout_constraintTop_toTopOf="parent" />
+
                 <ImageView
                     android:id="@+id/coupon_code_img"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@mipmap/ic_coupon"
                     android:layout_marginStart="8dp"
-                    app:layout_constraintTop_toTopOf="parent"
+                    android:src="@mipmap/ic_coupon"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     android:layout_marginEnd="8dp"
-                    android:fontFamily="@font/poppins_bold"
-                    android:text="@string/apply"/>
+                    android:text="@string/apply"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-              </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </com.google.android.material.card.MaterialCardView>
-            <View
-                android:id="@+id/cart_divider3"
-                android:layout_width="0dp"
-                android:layout_height="5dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
-                android:background="@color/colorFragmentBackground"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/coupon_code" />
+        </com.google.android.material.card.MaterialCardView>
 
-            <TextView
-                android:id="@+id/subtotal_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
-                android:fontFamily="@font/poppins_bold"
-                android:text="@string/subtotal"
-                android:textColor="@color/colorBlack"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cart_divider3" />
-            <TextView
-                android:id="@+id/subtotal_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="12dp"
-                android:fontFamily="@font/poppins"
-                tools:text="₹ 399"
-                android:textColor="@color/colorBlack"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cart_divider3" />
-            <TextView
-                android:id="@+id/discount_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
-                android:fontFamily="@font/poppins_bold"
-                android:text="@string/discount"
-                android:textColor="@color/colorBlack"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/subtotal_text" />
-            <TextView
-                android:id="@+id/discount_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="12dp"
-                android:fontFamily="@font/poppins"
-                tools:text="- 0"
-                android:textColor="@color/colorBlack"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/subtotal_value" />
-            <TextView
-                android:id="@+id/extra_charge_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
-                android:fontFamily="@font/poppins_bold"
-                android:text="@string/extra_charges"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/discount_text" />
-            <TextView
-                android:id="@+id/extra_charge_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="12dp"
-                android:fontFamily="@font/poppins"
-                tools:text="₹ 40"
-                android:textColor="@color/colorBlack"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/discount_value" />
-            <View
-                android:id="@+id/divider4"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@drawable/dotted_line"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintTop_toBottomOf="@id/extra_charge_text"/>
-            <TextView
-                android:id="@+id/cart_total_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
-                android:fontFamily="@font/poppins_bold"
-                android:text="@string/total"
-                android:layout_marginBottom="40dp"
-                android:textColor="@color/colorBlack"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/divider4"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-            <TextView
-                android:id="@+id/cart_total_value"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="12dp"
-                android:fontFamily="@font/poppins_bold"
-                app:layout_constraintBottom_toBottomOf="@id/cart_total_text"
-                tools:text="₹ 439"
-                android:textColor="@color/colorBlack"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/divider4" />
+        <View
+            android:id="@+id/cart_divider3"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/colorFragmentBackground"
+            app:layout_constraintBottom_toTopOf="@+id/subtotal_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/subtotal_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/subtotal"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintBottom_toTopOf="@+id/discount_text"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    </ScrollView>
+        <TextView
+            android:id="@+id/subtotal_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintBaseline_toBaselineOf="@+id/subtotal_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="₹ 399" />
+
+        <TextView
+            android:id="@+id/discount_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/discount"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintBottom_toTopOf="@+id/extra_charge_text"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/discount_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintBaseline_toBaselineOf="@+id/discount_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="- 0" />
+
+        <TextView
+            android:id="@+id/extra_charge_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/extra_charges"
+            app:layout_constraintBottom_toTopOf="@+id/divider4"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/extra_charge_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintBaseline_toBaselineOf="@+id/extra_charge_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="₹ 40" />
+
+        <View
+            android:id="@+id/divider4"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/dotted_line"
+            app:layout_constraintBottom_toTopOf="@+id/cart_total_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/cart_total_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/total"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintBottom_toTopOf="@id/proceed_to_pay_button"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/cart_total_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:textColor="@color/colorBlack"
+            app:layout_constraintBaseline_toBaselineOf="@+id/cart_total_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="₹ 439" />
 
 
-
-
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/proceed_to_pay_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorBlack"
+            app:backgroundTint="@color/colorBlack"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -1,7 +1,6 @@
 package com.example.bookkaro.mainui.makebooking.shops
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bookkaro.R
@@ -21,7 +21,7 @@ class SelectItemsFragment : Fragment() {
     private lateinit var binding: FragmentSelectItemsBinding
 
     private lateinit var viewModel: ShopViewModel
-    private lateinit var quantityList: MutableList<ItemQuantity>
+    private lateinit var listCart: MutableList<CartItem>
     private lateinit var shopUtils: ShopUtils
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -29,7 +29,7 @@ class SelectItemsFragment : Fragment() {
 
         val args: SelectItemsFragmentArgs by navArgs()
         val shopId = args.shopId
-        shopUtils = ShopUtils(requireContext())
+        shopUtils = ShopUtils(requireActivity().application)
         viewModel = ViewModelProvider(this, ShopViewModelFactory(requireActivity().application)).get(ShopViewModel::class.java)
 
         viewModel.getShopItems(shopId).observe(viewLifecycleOwner, Observer { items ->
@@ -38,54 +38,58 @@ class SelectItemsFragment : Fragment() {
             else {
                 setItemsExist()
                 binding.itemsRecycler.apply {
-                    quantityList = shopUtils.fetchQuantityItems().toMutableList()  //Fetches List from sharedPrefs
-                    val decoration = ShopCategoryDecoration(requireContext(), resources.getDimensionPixelSize(R.dimen.header_height), getSectionCallback(items)!!)
+                    listCart = shopUtils.fetchQuantityItems().toMutableList()  //Fetches List from sharedPrefs
                     layoutManager = LinearLayoutManager(requireContext())
-                    adapter = ShopItemAdapter(items, requireContext()) { clickedItem, quantity ->
-                        if (quantityList.isNotEmpty()) {
-                            if (clickedItem.shopDocId != quantityList[0].shopDocId) { //To check if clicked item is of the same shop as stored in sharedPrefs
+                    adapter = ShopItemAdapter(items, requireActivity().application, context) { clickedItem, quantity ->
+                        if (listCart.isNotEmpty()) {
+                            if (clickedItem.shopDocId != listCart[0].shopDocId) { //To check if clicked item is of the same shop as stored in sharedPrefs
                                 //To empty the list if you detect an item from another shop
-                                quantityList = arrayListOf()
+                                listCart = arrayListOf()
                                 //TODO: Alert Dialog
                             }
                         }
-                        var newQuantityItem = ItemQuantity(clickedItem.docId, clickedItem.shopDocId, quantity)
+                        var newQuantityItem = CartItem(clickedItem.docId, clickedItem.shopDocId, clickedItem.name, clickedItem.price, quantity)
                         var flag = true //Just to flag if the item is already present in sharedPrefs list or not
-                        quantityList.forEach {
-                            if (clickedItem.docId == it.shopItem) {
+                        listCart.forEach {
+                            if (clickedItem.docId == it.shopItemId) {
                                 //Update the quantity of the selected item
                                 it.quantity = quantity
                                 flag = false
                             }
                         }
-                        quantityList = quantityList.filter {
+                        listCart = listCart.filter {
                             //To remove those entries whose quantity is 0
                             it.quantity != 0
-                        } as MutableList<ItemQuantity>
+                        } as MutableList<CartItem>
                         if (flag) {
                             //if item not present in list , add it.
-                            quantityList.add(newQuantityItem)
+                            listCart.add(newQuantityItem)
                         }
                         //Push Final result to the sharedPrefs
-                        shopUtils.insertQuantityItems(quantityList)
-                        Log.d("Quantity", "$quantityList")
+                        shopUtils.insertQuantityItems(listCart)
+
                     }
-                    addItemDecoration(decoration)
+                    if (itemDecorationCount == 0) {
+                        val decoration = ShopCategoryDecoration(requireContext(), resources.getDimensionPixelSize(R.dimen.header_height), getSectionCallback(items)!!)
+                        addItemDecoration(decoration)
+                    }
                 }
             }
         })
 
+        binding.cartImage.setOnClickListener { findNavController().navigate(R.id.action_selectItemsFragment_to_shopCartFragment) }
+
         return binding.root
     }
 
-    private fun getSectionCallback(list: List<Map<String, ShopItem>>): ShopCategoryDecoration.SectionCallback? {
+    private fun getSectionCallback(list: List<ShopItem>): ShopCategoryDecoration.SectionCallback? {
         return object : ShopCategoryDecoration.SectionCallback {
             override fun isSectionHeader(pos: Int): Boolean {
-                return pos == 0 || list[pos].keys.elementAt(0) != list[pos - 1].keys.elementAt(0)
+                return pos == 0 || list[pos].category != list[pos - 1].category
             }
 
             override fun getSectionHeaderName(pos: Int): String {
-                return list[pos].keys.elementAt(0)
+                return list[pos].category
             }
         }
     }

@@ -1,5 +1,6 @@
 package com.example.bookkaro.helper.shop
 
+import android.app.Application
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -54,44 +55,44 @@ class ShopAdapter(private val items: List<Shop>, private val context: Context, p
 
 }
 
-class ShopItemAdapter(private val items: List<Map<String, ShopItem>>, private val context: Context,
-                      private val listener: (ShopItem,Int) -> Unit) : RecyclerView.Adapter<ShopItemViewHolder>() {
+class ShopItemAdapter(private val items: List<ShopItem>, private val application: Application, private val context: Context,
+                      private val listener: (ShopItem, Int) -> Unit) : RecyclerView.Adapter<ShopItemViewHolder>() {
 
     private lateinit var shopUtils: ShopUtils
-    private lateinit var storedQuantity: List<ItemQuantity>
+    private lateinit var storedCart: List<CartItem>
 
     override fun getItemCount(): Int {
         return items.size
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShopItemViewHolder {
-        shopUtils = ShopUtils(context)
-        storedQuantity = shopUtils.fetchQuantityItems()
+        shopUtils = ShopUtils(application)
+        storedCart = shopUtils.fetchQuantityItems()
         return ShopItemViewHolder(LayoutInflater.from(context).inflate(R.layout.list_item_shop_item, parent, false))
     }
 
     override fun onBindViewHolder(holder: ShopItemViewHolder, position: Int) {
-        val item = items[position].values.elementAt(0)
-        val priceText = "${context.getString(R.string.rupee_symbol)}${item.price}"
+        val item = items[position]
+        val priceText = "${application.getString(R.string.rupee_symbol)}${item.price}"
         Picasso.get().load(item.iconUrl).fit().into(holder.imageIcon)
         holder.textName.text = item.name
         holder.textPrice.text = priceText
         holder.textDesc.text = item.description
 
-        storedQuantity.forEach {
-            if(it.shopDocId == item.shopDocId && it.shopItem == item.docId){
+        storedCart.forEach {
+            if (it.shopDocId == item.shopDocId && it.shopItemId == item.docId) {
                 holder.quantityIndicatorNumber.text = "${it.quantity}"
                 holder.quantityIndicatorNegative.visibility = View.VISIBLE
             }
         }
 
         holder.quantityIndicatorPositive.setOnClickListener {
-            if(holder.quantityIndicatorNumber.text == context.resources.getString(R.string.quantity_add)){
-                listener(item,1)
+            if (holder.quantityIndicatorNumber.text == application.resources.getString(R.string.quantity_add)) {
+                listener(item, 1)
                 holder.quantityIndicatorNumber.text = "1"
                 holder.quantityIndicatorNegative.visibility = View.VISIBLE
-            }else{
-                listener(item,holder.quantityIndicatorNumber.text.toString().toInt() + 1)
+            } else {
+                listener(item, holder.quantityIndicatorNumber.text.toString().toInt() + 1)
                 holder.quantityIndicatorNumber.text = "${holder.quantityIndicatorNumber.text.toString().toInt() + 1}"
 
             }
@@ -101,7 +102,7 @@ class ShopItemAdapter(private val items: List<Map<String, ShopItem>>, private va
         holder.quantityIndicatorNegative.setOnClickListener {
             if(holder.quantityIndicatorNumber.text == "1"){
                 listener(item,0)
-                holder.quantityIndicatorNumber.text = context.resources.getString(R.string.quantity_add)
+                holder.quantityIndicatorNumber.text = application.resources.getString(R.string.quantity_add)
                 holder.quantityIndicatorNegative.visibility = View.GONE
             }else{
                 listener(item,holder.quantityIndicatorNumber.text.toString().toInt() - 1)
