@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,8 +19,7 @@
          app:layout_constraintStart_toStartOf="parent"
          app:layout_constraintTop_toTopOf="parent">
          <include layout="@layout/toolbar"/>
-
-            <TextView
+         <TextView
          android:id="@+id/toolbar_text1"
          android:layout_width="match_parent"
          android:layout_height="match_parent"
@@ -35,11 +35,10 @@
         <androidx.core.widget.NestedScrollView
             android:id="@+id/order_scroll"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:fillViewport="true"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/any_store_next"
             app:layout_constraintTop_toBottomOf="@+id/order_constraint"
-            android:layout_marginTop="56dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
@@ -111,6 +110,7 @@
        android:layout_marginEnd="16dp"
        android:background="@drawable/card_bg"
        android:minHeight="150dp"
+       tools:listitem="@layout/list_item"
        app:layout_constraintEnd_toEndOf="parent"
        app:layout_constraintHorizontal_bias="0.0"
        app:layout_constraintStart_toStartOf="parent"
@@ -221,7 +221,7 @@
        android:layout_marginEnd="16dp"
        android:background="@drawable/card_bg"
        android:fontFamily="@font/poppins"
-       android:hint="@string/_100"
+       tools:text="Rs.100"
        android:paddingStart="12dp"
        android:paddingEnd="12dp"
        android:paddingTop="12dp"
@@ -260,7 +260,7 @@
        android:paddingTop="12dp"
        android:paddingBottom="12dp"
        android:textSize="12sp"
-       android:layout_marginBottom="175dp"
+       android:layout_marginBottom="50dp"
        app:layout_constraintEnd_toEndOf="parent"
        app:layout_constraintStart_toStartOf="parent"
        app:layout_constraintTop_toBottomOf="@+id/instructions_text"
@@ -268,9 +268,8 @@
 
       </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
-
-
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/any_store_next"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorBlack"

@@ -64,6 +64,7 @@ class LoginValidateOTPFragment : Fragment() {
             override fun onCodeSent(verificationId: String, token: PhoneAuthProvider.ForceResendingToken) {
                 Log.d("dsdas", "verification code sent")
                 storedVerificationId = verificationId
+
             }
         }
 

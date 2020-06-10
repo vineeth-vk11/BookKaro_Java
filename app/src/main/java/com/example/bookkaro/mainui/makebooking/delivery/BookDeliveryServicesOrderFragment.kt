@@ -41,11 +41,6 @@ class BookDeliveryServicesOrderFragment : Fragment() {
         dropDownText.setAdapter(dropDownAdapter)
 
         val list = mutableListOf<Order>()
-        for (i in 0..2)
-        {
-            list.add(Order("item 1"))
-        }
-
         binding.listOfItemsRecyclerView?.apply {
             layoutManager=LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
             adapter= listItemsAdapter(list)
