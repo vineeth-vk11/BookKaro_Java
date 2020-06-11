@@ -2,7 +2,6 @@ package com.example.bookkaro.loginui
 
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -62,7 +61,6 @@ class LoginValidateOTPFragment : Fragment() {
             }
 
             override fun onCodeSent(verificationId: String, token: PhoneAuthProvider.ForceResendingToken) {
-                Log.d("dsdas", "verification code sent")
                 storedVerificationId = verificationId
 
             }
@@ -83,7 +81,8 @@ class LoginValidateOTPFragment : Fragment() {
             }
 
             override fun onFinish() {
-                //setRequestAgain()
+                if (isVisible)
+                    setRequestAgain()
             }
         }.start()
 
