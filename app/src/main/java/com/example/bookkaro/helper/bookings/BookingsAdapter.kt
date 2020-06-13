@@ -16,6 +16,8 @@ import java.util.*
 data class Booking(val docID: String,
                    val acceptedShopNumber: String?,
                    val serviceDate: Date,
+                   val serviceType: Long,
+                   val serviceCategory: Long,
                    val serviceName: String,
                    val servicePrice: Long,
                    val shopAddress: String?,

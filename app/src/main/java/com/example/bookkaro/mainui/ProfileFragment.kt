@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bookkaro.LoginActivity
 import com.example.bookkaro.R
 import com.example.bookkaro.databinding.FragmentProfileBinding
-import com.example.bookkaro.helper.ProfileOption
-import com.example.bookkaro.helper.ProfileOptionAdapter
+import com.example.bookkaro.helper.profile.ProfileOption
+import com.example.bookkaro.helper.profile.ProfileOptionAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 

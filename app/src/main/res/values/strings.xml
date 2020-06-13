@@ -46,6 +46,8 @@
     <string name="firestore_collection_order_data_field_accepted_shop_number" translatable="false">acceptedShopNumber</string>
     <string name="firestore_collection_order_data_field_user_id" translatable="false">userId</string>
     <string name="firestore_collection_order_data_field_service_date" translatable="false">serviceDate</string>
+    <string name="firestore_collection_order_data_field_service_type" translatable="false">serviceType</string>
+    <string name="firestore_collection_order_data_field_service_category" translatable="false">serviceCategory</string>
     <string name="firestore_collection_order_data_field_service_name" translatable="false">serviceName</string>
     <string name="firestore_collection_order_data_field_service_price" translatable="false">servicePrice</string>
     <string name="firestore_collection_order_data_field_status" translatable="false">status</string>
@@ -82,6 +84,23 @@
     <string name="firestore_collection_shop_data_subcollection_items_field_item_category" translatable="false">itemCategory</string>
     <!--END: Firebase Firestore values-->
 
+    <string name="service_delivery">Delivery services</string>
+    <string name="service_delivery_order">Order</string>
+    <string name="service_delivery_send_packages">Send packages</string>
+
+    <string name="service_household">Household services</string>
+    <string name="service_household_plumber">Plumber</string>
+    <string name="service_household_pest_control">Pest control</string>
+    <string name="service_household_painter">Painter</string>
+    <string name="service_household_electrician">Electrician</string>
+    <string name="service_household_carpenter">Carpenter</string>
+
+    <string name="service_shop">Shop</string>
+    <string name="service_shop_general_store">General store</string>
+    <string name="service_shop_beauty_store">Beauty store</string>
+    <string name="service_shop_clothing_store">Clothing</string>
+
+    <string name="invalid">Invalid service</string>
 
     <string name="status_pending">Pending</string>
     <string name="status_accepted">Accepted</string>
@@ -147,7 +166,6 @@
 
     <string name="other_shop_items_title">Items in other shop</string>
     <string name="other_shop_items_message">You already have items from another shop in your cart. Delete them and add these instead?</string>
-    v
     <string name="other_shop_items_neutral">Cancel</string>
     <string name="other_shop_items_positive">Yes</string>
 </resources>

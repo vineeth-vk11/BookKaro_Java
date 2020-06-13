@@ -42,7 +42,7 @@ public class ServicesItemAdapter extends RecyclerView.Adapter<ServicesItemAdapte
     @Override
     public void onBindViewHolder(@NonNull ServicesViewHolder holder, int position) {
         final ServicesData data = itemDataList.get(position);
-        holder.service_name.setText(data.getName());
+        holder.service_name.setText(ServicesGroup.Companion.getNameStringId(data.getServiceCategory()));
         Picasso.get().load(itemDataList.get(position).getImage()).into(holder.service_icon);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,27 +53,27 @@ public class ServicesItemAdapter extends RecyclerView.Adapter<ServicesItemAdapte
                     navController.navigate(action);
                 } else if (serviceType == ServicesGroup.SHOP_SERVICE) {
                     long type = Shop.SHOP_TYPE_GENERAL;
-                    switch (data.getName()) {
-                        case "General store":
+                    switch ((int) data.getServiceCategory()) {
+                        case (int) ServicesGroup.SHOP_SERVICE_GENERAL_STORE:
                             type = Shop.SHOP_TYPE_GENERAL;
                             break;
-                        case "Beauty store":
+                        case (int) ServicesGroup.SHOP_SERVICE_BEAUTY_STORE:
                             type = Shop.SHOP_TYPE_BEAUTY;
                             break;
-                        case "Clothing store":
+                        case (int) ServicesGroup.SHOP_SERVICE_CLOTHING_STORE:
                             type = Shop.SHOP_TYPE_CLOTHING;
                             break;
                     }
                     HomeFragmentDirections.ActionHomeFragmentToBookShopServiceFragment action = HomeFragmentDirections.actionHomeFragmentToBookShopServiceFragment(type);
                     navController.navigate(action);
                 } else if (serviceType == ServicesGroup.DELIVERY_SERVICE) {
-                    switch (data.getName()) {
-                        case "Order": {
+                    switch ((int) data.getServiceCategory()) {
+                        case (int) ServicesGroup.DELIVERY_SERVICE_ORDER: {
                             HomeFragmentDirections.ActionHomeFragmentToBookDeliveryServicesOrderFragment action = HomeFragmentDirections.actionHomeFragmentToBookDeliveryServicesOrderFragment(data);
                             navController.navigate(action);
                             break;
                         }
-                        case "Send packages": {
+                        case (int) ServicesGroup.DELIVERY_SERVICE_SEND_PACKAGES: {
                             HomeFragmentDirections.ActionHomeFragmentToBookDeliveryServicesSendPackageFragment action = HomeFragmentDirections.actionHomeFragmentToBookDeliveryServicesSendPackageFragment(data);
                             navController.navigate(action);
                             break;

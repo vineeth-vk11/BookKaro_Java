@@ -19,13 +19,11 @@ import com.example.bookkaro.mainui.makebooking.householdservices.BookHouseholdSe
 class SelectServiceFragment(private val serviceData: ServicesData) : Fragment() {
 
     private lateinit var binding: SelectServiceFragmentBinding
-
     private lateinit var viewModel: BookHouseholdServicesViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.select_service_fragment, container, false)
-
         viewModel = ViewModelProvider(this, BookHouseholdServicesViewModelFactory(serviceData.docId, requireActivity().application)).get(BookHouseholdServicesViewModel::class.java)
 
         viewModel.getServices().observe(viewLifecycleOwner, Observer { services ->

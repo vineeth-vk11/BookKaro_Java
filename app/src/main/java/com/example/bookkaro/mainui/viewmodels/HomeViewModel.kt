@@ -96,16 +96,16 @@ class HomeViewModel(private val application: Application) : ViewModel() {
             for (doc in querySnapshot!!) {
                 //This will sort each respective service into its respective list. To add another service group, check the service type and add the service data into its respective list created ealier.
                 when (doc.getLong(application.getString(R.string.firestore_collection_app_data_doc_services_subcollection_data_field_service_type))) {
-                    ServicesGroup.DELIVERY_SERVICE -> deliveryServices.add(ServicesData(doc.id, doc.getLong(application.getString(R.string.firestore_collection_app_data_doc_services_subcollection_data_field_service_type))!!, doc.getString(application.getString(R.string.firestore_collection_app_data_doc_services_subcollection_data_field_service_name))!!, doc.getString(application.getString(R.string.firestore_collection_app_data_doc_services_subcollection_data_field_icon_url))!!))
-                    ServicesGroup.HOUSEHOLD_SERVICE -> householdServices.add(ServicesData(doc.id, doc.getLong(application.getString(R.string.firestore_collection_app_data_doc_services_subcollection_data_field_service_type))!!, doc.getString(application.getString(R.string.firestore_collection_app_data_doc_services_subcollection_data_field_service_name))!!, doc.getString(application.getString(R.string.firestore_collection_app_data_doc_services_subcollection_data_field_icon_url))!!))
-                    ServicesGroup.SHOP_SERVICE -> shopServices.add(ServicesData(doc.id, doc.getLong(application.getString(R.string.firestore_collection_app_data_doc_services_subcollection_data_field_service_type))!!, doc.getString(application.getString(R.string.firestore_collection_app_data_doc_services_subcollection_data_field_service_name))!!, doc.getString(application.getString(R.string.firestore_collection_app_data_doc_services_subcollection_data_field_icon_url))!!))
+                    ServicesGroup.DELIVERY_SERVICE -> deliveryServices.add(ServicesData(doc.id, doc.getLong(application.getString(R.string.firestore_collection_app_data_doc_services_subcollection_data_field_service_type))!!, doc.getLong(application.getString(R.string.firestore_collection_app_data_doc_services_subcollection_data_field_service_name))!!, doc.getString(application.getString(R.string.firestore_collection_app_data_doc_services_subcollection_data_field_icon_url))!!))
+                    ServicesGroup.HOUSEHOLD_SERVICE -> householdServices.add(ServicesData(doc.id, doc.getLong(application.getString(R.string.firestore_collection_app_data_doc_services_subcollection_data_field_service_type))!!, doc.getLong(application.getString(R.string.firestore_collection_app_data_doc_services_subcollection_data_field_service_name))!!, doc.getString(application.getString(R.string.firestore_collection_app_data_doc_services_subcollection_data_field_icon_url))!!))
+                    ServicesGroup.SHOP_SERVICE -> shopServices.add(ServicesData(doc.id, doc.getLong(application.getString(R.string.firestore_collection_app_data_doc_services_subcollection_data_field_service_type))!!, doc.getLong(application.getString(R.string.firestore_collection_app_data_doc_services_subcollection_data_field_service_name))!!, doc.getString(application.getString(R.string.firestore_collection_app_data_doc_services_subcollection_data_field_icon_url))!!))
                 }
             }
             //Everything can now be added into a list of ServicesGroups. To add another service group, add that list to servicesList.
             val servicesList: MutableList<ServicesGroup> = mutableListOf()
-            servicesList.add(ServicesGroup(application.getString(R.string.delivery_services), deliveryServices))
-            servicesList.add(ServicesGroup(application.getString(R.string.household_service), householdServices))
-            servicesList.add(ServicesGroup(application.getString(R.string.shop), shopServices))
+            servicesList.add(ServicesGroup(application.getString(R.string.service_delivery), deliveryServices))
+            servicesList.add(ServicesGroup(application.getString(R.string.service_household), householdServices))
+            servicesList.add(ServicesGroup(application.getString(R.string.service_shop), shopServices))
             services.value = servicesList
         }
         return services

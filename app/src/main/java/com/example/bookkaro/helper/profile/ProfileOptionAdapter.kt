@@ -1,4 +1,4 @@
-package com.example.bookkaro.helper
+package com.example.bookkaro.helper.profile
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -17,7 +17,7 @@ class ProfileOptionViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val textTitle: TextView = view.profile_option_text
 }
 
-class ProfileOptionAdapter(val items: ArrayList<ProfileOption>, val context: Context) : RecyclerView.Adapter<ProfileOptionViewHolder>() {
+class ProfileOptionAdapter(private val items: ArrayList<ProfileOption>, val context: Context) : RecyclerView.Adapter<ProfileOptionViewHolder>() {
 
     override fun getItemCount(): Int {
         return items.size
