@@ -10,6 +10,7 @@ import com.example.bookkaro.helper.bookings.Review
 import com.example.bookkaro.helper.home.ServiceOrPackageToBook
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
+import java.io.Serializable
 
 class ServicesRepository(private val serviceDocumentId: String, private val application: Application) {
 
@@ -35,9 +36,9 @@ class BookHouseholdServicesViewModel(serviceDocumentId: String, application: App
 
     private val firestoreRepository = ServicesRepository(serviceDocumentId, application)
 
-    private var services: MutableLiveData<List<ServiceOrPackageToBook>> = MutableLiveData()
-    private var packages: MutableLiveData<List<ServiceOrPackageToBook>> = MutableLiveData()
-    private var reviews: MutableLiveData<List<Review>> = MutableLiveData()
+    private val services: MutableLiveData<List<ServiceOrPackageToBook>> = MutableLiveData()
+    private val packages: MutableLiveData<List<ServiceOrPackageToBook>> = MutableLiveData()
+    private val reviews: MutableLiveData<List<Review>> = MutableLiveData()
 
     fun getServices(): LiveData<List<ServiceOrPackageToBook>> {
         firestoreRepository.getServices().addSnapshotListener { querySnapshot, firebaseFirestoreException ->
@@ -101,7 +102,24 @@ class BookHouseholdServicesViewModel(serviceDocumentId: String, application: App
         return reviews
     }
 
+    private val _toBook: MutableLiveData<MutableMap<ServiceOrPackageToBook, Int>> = MutableLiveData(mutableMapOf())
+    val toBook: LiveData<MutableMap<ServiceOrPackageToBook, Int>>
+        get() = _toBook
+
+    fun addToList(service: ServiceOrPackageToBook, qty: Int) {
+        if (_toBook.value != null) {
+            if (qty != 0)
+                _toBook.value?.put(service, qty)
+            else
+                _toBook.value?.remove(service)
+        } else {
+            _toBook.value = mutableMapOf(service to qty)
+        }
+    }
+
 }
+
+data class OrderData(val data: MutableMap<ServiceOrPackageToBook, Int>) : Serializable
 
 class BookHouseholdServicesViewModelFactory(private val serviceDocumentId: String, private val application: Application) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {

@@ -30,20 +30,17 @@ class BookDeliveryServicesOrderFragment : Fragment() {
         val args: BookDeliveryServicesOrderFragmentArgs by navArgs()
         val serviceData = args.serviceData
 
-
-
         viewModel = ViewModelProvider(this).get(BookDeliveryServicesOrderViewModel::class.java)
-        dropDownText=binding.dropdownText
 
-        val items= arrayOf("Stationary")
-
-        val dropDownAdapter:ArrayAdapter<String> = ArrayAdapter(requireContext(),R.layout.list_item,items)
-        dropDownText.setAdapter(dropDownAdapter)
+        val items = arrayOf("Stationary", "Item 1", "Item 2")
+        val dropDownAdapter = ArrayAdapter(requireContext(), R.layout.list_item, items)
+        binding.dropdownText.setAdapter(dropDownAdapter)
+        binding.dropdownText.setText(items[0], false)
 
         val list = mutableListOf<Order>()
         binding.listOfItemsRecyclerView?.apply {
-            layoutManager=LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
-            adapter= listItemsAdapter(list)
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = listItemsAdapter(list)
         }
         return binding.root
     }

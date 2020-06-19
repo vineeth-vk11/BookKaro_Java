@@ -168,4 +168,6 @@
     <string name="other_shop_items_message">You already have items from another shop in your cart. Delete them and add these instead?</string>
     <string name="other_shop_items_neutral">Cancel</string>
     <string name="other_shop_items_positive">Yes</string>
+    <string name="text_continue">Continue</string>
+    <string name="place_order">Place order</string>
 </resources>

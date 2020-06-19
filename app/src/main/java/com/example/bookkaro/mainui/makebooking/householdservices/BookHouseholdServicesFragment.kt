@@ -12,7 +12,6 @@ import com.example.bookkaro.R
 import com.example.bookkaro.databinding.BookHouseholdServicesFragmentBinding
 import com.example.bookkaro.helper.ServicesData
 import com.example.bookkaro.mainui.makebooking.householdservices.tabs.CustomerReviewsFragment
-import com.example.bookkaro.mainui.makebooking.householdservices.tabs.PackagesFragment
 import com.example.bookkaro.mainui.makebooking.householdservices.tabs.SelectServiceFragment
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -20,7 +19,7 @@ class BookHouseholdServicesFragment : Fragment() {
 
     private lateinit var binding: BookHouseholdServicesFragmentBinding
 
-    private val title = listOf("Select services", "Packages", " Reviews")
+    private val title = listOf("Select services or packages", "Reviews")
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -39,7 +38,7 @@ class BookHouseholdServicesFragment : Fragment() {
 
     private inner class HouseholdServicesAdapter(private val serviceData: ServicesData) : FragmentStateAdapter(requireActivity()) {
 
-        val tabsCount = 3
+        val tabsCount = 2
 
         override fun getItemCount(): Int {
             return tabsCount
@@ -48,8 +47,7 @@ class BookHouseholdServicesFragment : Fragment() {
         override fun createFragment(position: Int): Fragment {
             return when (position) {
                 0 -> SelectServiceFragment(serviceData)
-                1 -> PackagesFragment(serviceData)
-                2 -> CustomerReviewsFragment(serviceData)
+                1 -> CustomerReviewsFragment(serviceData)
                 else -> SelectServiceFragment(serviceData)
             }
         }

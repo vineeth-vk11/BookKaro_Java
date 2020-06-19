@@ -29,7 +29,6 @@ class ShopItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val quantityIndicatorPositive: ImageView = view.quantity_indicator_postitive
     val quantityIndicatorNegative: ImageView = view.quantity_indicator_negative
     val quantityIndicatorNumber: TextView = view.quantity_indicator_number
-
 }
 
 class ShopAdapter(private val items: List<Shop>, private val context: Context, private val navController: NavController) : RecyclerView.Adapter<ShopViewHolder>() {

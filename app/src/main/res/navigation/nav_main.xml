@@ -103,6 +103,11 @@
         <argument
             android:name="serviceData"
             app:argType="com.example.bookkaro.helper.ServicesData" />
+        <action
+            android:id="@+id/action_bookHouseholdServicesFragment_to_paymentHouseholdFragment"
+            app:destination="@id/paymentHouseholdFragment"
+            app:popUpTo="@id/bookHouseholdServicesFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/bookShopServiceFragment"
@@ -156,5 +161,23 @@
             app:destination="@id/homeFragment"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentHouseholdFragment"
+        android:name="com.example.bookkaro.mainui.makebooking.householdservices.tabs.PaymentHouseholdFragment"
+        android:label="PaymentHouseholdFragment"
+        tools:layout="@layout/payment_household_fragment">
+        <argument
+            android:name="orderData"
+            app:argType="com.example.bookkaro.mainui.makebooking.householdservices.OrderData" />
+        <argument
+            android:name="serviceType"
+            app:argType="long" />
+        <argument
+            android:name="serviceCategory"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_paymentHouseholdFragment_to_bookingsFragment"
+            app:destination="@id/bookingsFragment" />
     </fragment>
 </navigation>
