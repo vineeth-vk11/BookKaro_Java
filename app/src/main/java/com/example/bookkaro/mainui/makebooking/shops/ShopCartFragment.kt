@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,9 +29,20 @@ class ShopCartFragment : Fragment() {
             adapter = CartAdapter(viewmodel.cartItems)
         }
 
+        binding.subtotalValue.text = viewmodel.getSubtotal()
+        binding.discountValue.text = viewmodel.getDiscount()
+        binding.extraChargeValue.text = viewmodel.getExtraCharges()
+        binding.cartTotalValue.text = viewmodel.getTotal()
+
         binding.proceedToPayButton.setOnClickListener {
             viewmodel.placeOrder()
-            findNavController().navigate(R.id.action_shopCartFragment_to_bookingsFragment)
+            viewmodel.orderPlaced.observe(viewLifecycleOwner, Observer {
+                if (it.first) {
+                    val action = ShopCartFragmentDirections.actionShopCartFragmentToOrderPlacedFragment(it.second
+                            ?: "")
+                    findNavController().navigate(action)
+                }
+            })
         }
 
         return binding.root

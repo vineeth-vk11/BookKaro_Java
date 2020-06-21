@@ -170,4 +170,6 @@
     <string name="other_shop_items_positive">Yes</string>
     <string name="text_continue">Continue</string>
     <string name="place_order">Place order</string>
+    <string name="view_bookings">View bookings</string>
+    <string name="order_placed">Your order has been placed!</string>
 </resources>

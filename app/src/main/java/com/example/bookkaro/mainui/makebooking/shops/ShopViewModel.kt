@@ -97,6 +97,10 @@ class ShopViewModel(private val application: Application) : ViewModel() {
         return shopItems
     }
 
+    private val _orderPlaced: MutableLiveData<Pair<Boolean, String?>> = MutableLiveData(Pair(false, null))
+    val orderPlaced: LiveData<Pair<Boolean, String?>>
+        get() = _orderPlaced
+
     fun placeOrder() {
         var price = 0L
         val items: MutableList<String> = mutableListOf()
@@ -115,10 +119,22 @@ class ShopViewModel(private val application: Application) : ViewModel() {
                 "shopNumber" to cartItems[0].shopDocId,
                 "items" to items,
                 "servicePrice" to price,
-                "serviceName" to "Shop delivery"
-        )
-        )
+                "serviceName" to "Shop delivery")
+        ).addOnSuccessListener { _orderPlaced.value = Pair(true, it.id) }
     }
+
+    fun getSubtotal(): String {
+        var price = 0L
+        cartItems.forEach { item ->
+            price += item.itemPrice * item.quantity
+        }
+        return "₹$price"
+    }
+
+    fun getDiscount() = "- ₹0"
+    fun getExtraCharges() = "₹0"
+
+    fun getTotal() = getSubtotal()
 
 }
 

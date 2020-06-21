@@ -1,4 +1,4 @@
-package com.example.bookkaro.mainui.makebooking.householdservices.tabs
+package com.example.bookkaro.mainui.makebooking.householdservices
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -47,7 +47,10 @@ class PaymentHouseholdFragment : Fragment() {
                             "serviceType" to args.serviceType,
                             "serviceCategory" to args.serviceCategory
                     )
-            ).addOnSuccessListener { findNavController().navigate(R.id.action_paymentHouseholdFragment_to_bookingsFragment) }
+            ).addOnSuccessListener {
+                val action = PaymentHouseholdFragmentDirections.actionPaymentHouseholdFragmentToOrderPlacedFragment(it.id)
+                findNavController().navigate(action)
+            }
         }
 
         return binding.root
