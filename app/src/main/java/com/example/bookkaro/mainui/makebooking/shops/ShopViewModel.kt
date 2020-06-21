@@ -7,12 +7,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.bookkaro.R
+import com.example.bookkaro.helper.ServicesGroup
 import com.example.bookkaro.helper.shop.CartItem
 import com.example.bookkaro.helper.shop.Shop
 import com.example.bookkaro.helper.shop.ShopItem
 import com.example.bookkaro.helper.shop.ShopUtils
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
+import java.util.*
 
 class ShopsRepository(private val application: Application) {
 
@@ -24,6 +27,14 @@ class ShopsRepository(private val application: Application) {
 
     fun getShopItems(shopId: String): CollectionReference {
         return firestoreDb.collection("${application.getString(R.string.firestore_collection_shop_data)}/$shopId/${application.getString(R.string.firestore_collection_shop_data_subcollection_items)}")
+    }
+
+    fun getOrders(): CollectionReference {
+        return firestoreDb.collection("OrderData")
+    }
+
+    fun getOrder(docId: String): CollectionReference {
+        return firestoreDb.collection("OrderData/$docId/Items")
     }
 
 }
@@ -84,6 +95,29 @@ class ShopViewModel(private val application: Application) : ViewModel() {
             shopItems.value = itemsList
         }
         return shopItems
+    }
+
+    fun placeOrder() {
+        var price = 0L
+        val items: MutableList<String> = mutableListOf()
+        cartItems.forEachIndexed { index, cartItem ->
+            items.add(cartItem.shopItemId)
+            price += cartItem.itemPrice * cartItem.quantity
+        }
+        firestoreRepository.getOrders().add(mapOf(
+                "userId" to FirebaseAuth.getInstance().uid,
+                "status" to 100L,
+                "shopName" to "",
+                "shopIconUrl" to "",
+                "shopAddress" to "",
+                "serviceDate" to Date(),
+                "serviceType" to ServicesGroup.SHOP_SERVICE,
+                "shopNumber" to cartItems[0].shopDocId,
+                "items" to items,
+                "servicePrice" to price,
+                "serviceName" to "Shop delivery"
+        )
+        )
     }
 
 }

@@ -45,7 +45,8 @@ class BookingsViewModel(private val application: Application) : ViewModel() {
                         doc.getString(application.getString(R.string.firestore_collection_order_data_field_accepted_shop_number)),
                         doc.getDate(application.getString(R.string.firestore_collection_order_data_field_service_date))!!,
                         doc.getLong(application.getString(R.string.firestore_collection_order_data_field_service_type))!!,
-                        doc.getLong(application.getString(R.string.firestore_collection_order_data_field_service_category))!!,
+                        doc.getLong(application.getString(R.string.firestore_collection_order_data_field_service_category))
+                                ?: 0L,
                         doc.getString(application.getString(R.string.firestore_collection_order_data_field_service_name))!!,
                         doc.getLong(application.getString(R.string.firestore_collection_order_data_field_service_price))!!,
                         doc.getString(application.getString(R.string.firestore_collection_order_data_field_shop_address)),

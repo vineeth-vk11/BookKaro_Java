@@ -161,6 +161,10 @@
             app:destination="@id/homeFragment"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_shopCartFragment_to_bookingsFragment"
+            app:destination="@id/bookingsFragment"
+            app:popUpTo="@id/shopCartFragment" />
     </fragment>
     <fragment
         android:id="@+id/paymentHouseholdFragment"
