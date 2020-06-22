@@ -6,14 +6,14 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.parcel.Parcelize
 import java.io.Serializable
 
-data class OrderPackages(var category:String,
-                         var storeAddress: String,
-                         var deliveryAddress: String,
-                         var items:String,
-                         var estimatedTotal:String,
-                         var instructions: String):Serializable
+data class OrderPackages(val category:String,
+                         val storeAddress: String,
+                         val deliveryAddress: String,
+                         val items:String,
+                         val estimatedTotal:String,
+                         val instructions: String):Serializable
 
-data class SendPackages(var pickupAddress: String,
-                        var deliveryAddress: String,
-                        var packageContents: String,
-                        var instructions: String):Serializable
+data class SendPackages(val pickupAddress: String,
+                        val deliveryAddress: String,
+                        val packageContents: String,
+                        val instructions: String):Serializable
