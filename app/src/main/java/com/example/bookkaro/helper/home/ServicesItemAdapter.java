@@ -15,10 +15,12 @@ import com.example.bookkaro.R;
 import com.example.bookkaro.helper.ServicesData;
 import com.example.bookkaro.helper.ServicesGroup;
 import com.example.bookkaro.helper.shop.Shop;
-import com.example.bookkaro.mainui.HomeFragmentDirections;
+import com.example.bookkaro.mainui.home.HomeFragmentDirections;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+;
 
 public class ServicesItemAdapter extends RecyclerView.Adapter<ServicesItemAdapter.ServicesViewHolder> {
 

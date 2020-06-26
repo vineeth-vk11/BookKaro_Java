@@ -1,4 +1,4 @@
-package com.example.bookkaro.mainui.viewmodels
+package com.example.bookkaro.mainui.bookings
 
 import android.app.Application
 import android.util.Log

@@ -1,4 +1,4 @@
-package com.example.bookkaro.mainui
+package com.example.bookkaro.mainui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,8 +16,6 @@ import com.example.bookkaro.databinding.FragmentHomeBinding
 import com.example.bookkaro.helper.home.AdsAdapter
 import com.example.bookkaro.helper.home.CategoryAdapter
 import com.example.bookkaro.helper.home.ServicesGroupAdapter
-import com.example.bookkaro.mainui.viewmodels.HomeViewModel
-import com.example.bookkaro.mainui.viewmodels.HomeViewModelFactory
 
 
 class HomeFragment : Fragment() {

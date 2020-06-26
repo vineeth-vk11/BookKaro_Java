@@ -1,4 +1,4 @@
-package com.example.bookkaro.mainui;
+package com.example.bookkaro.mainui.help;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

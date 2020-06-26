@@ -1,4 +1,4 @@
-package com.example.bookkaro.mainui
+package com.example.bookkaro.mainui.profile
 
 import android.content.Intent
 import android.os.Bundle

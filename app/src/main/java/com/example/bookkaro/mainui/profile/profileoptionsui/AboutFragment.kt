@@ -1,4 +1,4 @@
-package com.example.bookkaro.profileoptionsui
+package com.example.bookkaro.mainui.profile.profileoptionsui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,11 +7,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.bookkaro.R
 
-class TnCFragment : Fragment() {
+/**
+ * A simple [Fragment] subclass.
+ */
+class AboutFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_tnc, container, false)
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_about, container, false)
     }
 
 }

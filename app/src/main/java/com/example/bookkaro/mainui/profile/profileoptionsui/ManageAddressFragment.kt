@@ -1,4 +1,4 @@
-package com.example.bookkaro.profileoptionsui
+package com.example.bookkaro.mainui.profile.profileoptionsui
 
 import android.os.Bundle
 import android.view.LayoutInflater

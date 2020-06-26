@@ -1,4 +1,4 @@
-package com.example.bookkaro.mainui
+package com.example.bookkaro.mainui.bookings
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,8 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bookkaro.R
 import com.example.bookkaro.databinding.FragmentBookingsBinding
 import com.example.bookkaro.helper.bookings.BookingsAdapter
-import com.example.bookkaro.mainui.viewmodels.BookingsViewModel
-import com.example.bookkaro.mainui.viewmodels.BookingsViewModelFactory
 
 class BookingsFragment : Fragment() {
 
