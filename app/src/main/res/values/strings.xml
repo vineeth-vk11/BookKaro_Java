@@ -31,6 +31,8 @@
     <string name="services_by_category">Services by category</string>
     <string name="reschedule">Reschedule</string>
 
+    <string name="delivery">Delivery</string>
+    <string name="household">Household</string>
     <string name="delivery_services">Delivery Services</string>
     <string name="household_service">Household Services</string>
     <string name="shop">Shop</string>
@@ -70,12 +72,14 @@
     <string name="firestore_collection_app_data_doc_services_subcollection_data_field_icon_url" translatable="false">iconUrl</string>
     <string name="firestore_collection_app_data_doc_services_subcollection_data_field_service_name" translatable="false">serviceName</string>
     <string name="firestore_collection_app_data_doc_services_subcollection_data_field_service_type" translatable="false">serviceType</string>
+    <string name="firestore_collection_app_data_doc_services_subcollection_data_field_service_locations" translatable="false">serviceLocations</string>
 
     <string name="firestore_collection_shop_data" translatable="false">ShopData</string>
     <string name="firestore_collection_shop_data_field_shop_type" translatable="false">shopType</string>
     <string name="firestore_collection_shop_data_field_shop_name" translatable="false">shopName</string>
     <string name="firestore_collection_shop_data_field_shop_icon_url" translatable="false">shopIconUrl</string>
     <string name="firestore_collection_shop_data_field_shop_address" translatable="false">shopAddress</string>
+    <string name="firestore_collection_shop_data_field_service_location" translatable="false">serviceLocations</string>
     <string name="firestore_collection_shop_data_subcollection_items" translatable="false">Items</string>
     <string name="firestore_collection_shop_data_subcollection_items_field_item_name" translatable="false">itemName</string>
     <string name="firestore_collection_shop_data_subcollection_items_field_item_price" translatable="false">itemPrice</string>

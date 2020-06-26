@@ -49,8 +49,10 @@ class ShopViewModel(private val application: Application) : ViewModel() {
     private var shopItems: MutableLiveData<List<ShopItem>> = MutableLiveData()
     var cartItems: List<CartItem> = ShopUtils(application).fetchQuantityItems()
 
+    val pin = 411014
+
     fun getShops(shopType: Long): LiveData<List<Shop>> {
-        firestoreRepository.getShops().whereEqualTo(application.getString(R.string.firestore_collection_shop_data_field_shop_type), shopType).addSnapshotListener { querySnapshot, firebaseFirestoreException ->
+        firestoreRepository.getShops().whereArrayContains(application.getString(R.string.firestore_collection_shop_data_field_service_location), pin).addSnapshotListener { querySnapshot, firebaseFirestoreException ->
             if (firebaseFirestoreException != null) {
                 Log.e(TAG, "Firestore shops listening failed.")
                 shops.value = null
@@ -66,7 +68,7 @@ class ShopViewModel(private val application: Application) : ViewModel() {
                         doc.getString(application.getString(R.string.firestore_collection_shop_data_field_shop_address))!!
                 ))
             }
-            shops.value = shopsList
+            shops.value = shopsList.filter { it.type == shopType }.toMutableList()
         }
         return shops
     }

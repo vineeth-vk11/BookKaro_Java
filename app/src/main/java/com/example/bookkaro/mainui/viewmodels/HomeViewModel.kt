@@ -42,6 +42,8 @@ class HomeViewModel(private val application: Application) : ViewModel() {
     private var ads: MutableLiveData<List<Ads>> = MutableLiveData()
     private var services: MutableLiveData<List<ServicesGroup>> = MutableLiveData()
 
+    //Change later
+    private val pin = 411014
 
     fun getCategories(): LiveData<List<Category>> {
         firestoreRepository.getCategories().orderBy(application.getString(R.string.firestore_collection_app_data_doc_categories_field_order_in_category)).addSnapshotListener { querySnapshot, firebaseFirestoreException ->
@@ -81,7 +83,7 @@ class HomeViewModel(private val application: Application) : ViewModel() {
     }
 
     fun getServices(): LiveData<List<ServicesGroup>> {
-        firestoreRepository.getServices().orderBy(application.getString(R.string.firestore_collection_app_data_doc_services_subcollection_data_field_service_type)).addSnapshotListener { querySnapshot, firebaseFirestoreException ->
+        firestoreRepository.getServices().whereArrayContains(application.getString(R.string.firestore_collection_app_data_doc_services_subcollection_data_field_service_locations), pin).addSnapshotListener { querySnapshot, firebaseFirestoreException ->
             if (firebaseFirestoreException != null) {
                 Log.e(TAG, "Firestore services listening failed.")
                 ads.value = null
@@ -103,9 +105,12 @@ class HomeViewModel(private val application: Application) : ViewModel() {
             }
             //Everything can now be added into a list of ServicesGroups. To add another service group, add that list to servicesList.
             val servicesList: MutableList<ServicesGroup> = mutableListOf()
-            servicesList.add(ServicesGroup(application.getString(R.string.service_delivery), deliveryServices))
-            servicesList.add(ServicesGroup(application.getString(R.string.service_household), householdServices))
-            servicesList.add(ServicesGroup(application.getString(R.string.service_shop), shopServices))
+            if (deliveryServices.isNotEmpty())
+                servicesList.add(ServicesGroup(application.getString(R.string.service_delivery), deliveryServices))
+            if (householdServices.isNotEmpty())
+                servicesList.add(ServicesGroup(application.getString(R.string.service_household), householdServices))
+            if (shopServices.isNotEmpty())
+                servicesList.add(ServicesGroup(application.getString(R.string.service_shop), shopServices))
             services.value = servicesList
         }
         return services
