@@ -28,9 +28,9 @@
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_marginStart="16dp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView2"
+                app:layout_constraintBottom_toBottomOf="@+id/current_address_text"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textView2"
+                app:layout_constraintTop_toTopOf="@+id/current_address_text"
                 app:srcCompat="@drawable/ic_location_on_black_24dp" />
 
             <EditText
@@ -62,12 +62,12 @@
                 app:srcCompat="@drawable/ic_search_black_24" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/current_address_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:text="Hyderabad"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                android:text="Unable to determine location"
                 android:textColor="@color/colorWhite"
                 android:textSize="14sp"
                 app:layout_constraintStart_toEndOf="@+id/imageView"

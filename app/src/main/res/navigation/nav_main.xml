@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_homeFragment_to_bookDeliveryServicesSendPackageFragment"
             app:destination="@id/bookDeliveryServicesSendPackageFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_viewAddressFragment"
+            app:destination="@id/viewAddressFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -39,7 +42,7 @@
         tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/action_profileFragment_to_manageAddressFragment"
-            app:destination="@id/manageAddressFragment" />
+            app:destination="@id/viewAddressFragment" />
         <action
             android:id="@+id/action_profileFragment_to_bookingsFragment"
             app:destination="@id/bookingsFragment" />
@@ -69,11 +72,6 @@
         android:name="com.example.bookkaro.mainui.help.HelpFragment"
         android:label="HelpFragment"
         tools:layout="@layout/fragment_help" />
-    <fragment
-        android:id="@+id/manageAddressFragment"
-        android:name="com.example.bookkaro.mainui.profile.profileoptionsui.ManageAddressFragment"
-        android:label="fragment_manage_address"
-        tools:layout="@layout/fragment_manage_address" />
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.example.bookkaro.mainui.profile.profileoptionsui.AboutFragment"
@@ -219,13 +217,27 @@
         android:id="@+id/payment_send_fragment"
         android:name="com.example.bookkaro.payment_send_fragment"
         android:label="fragment_payment_send_fragment"
-        tools:layout="@layout/fragment_payment_send_fragment" >
+        tools:layout="@layout/fragment_payment_send_fragment">
         <argument
             android:name="sendPackages"
             app:argType="com.example.bookkaro.helper.SendPackages"
-            app:nullable="true"/>
+            app:nullable="true" />
         <action
             android:id="@+id/action_payment_send_fragment_to_orderPlacedFragment"
             app:destination="@id/orderPlacedFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/viewAddressFragment"
+        android:name="com.example.bookkaro.mainui.home.adresses.ViewAddressFragment"
+        android:label="ViewAddressFragment"
+        tools:layout="@layout/view_address_fragment">
+        <action
+            android:id="@+id/action_viewAddressFragment_to_addAddressFragment"
+            app:destination="@id/addAddressFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addAddressFragment"
+        android:name="com.example.bookkaro.mainui.home.adresses.AddAddressFragment"
+        android:label="AddAddressFragment"
+        tools:layout="@layout/add_address_fragment" />
 </navigation>
