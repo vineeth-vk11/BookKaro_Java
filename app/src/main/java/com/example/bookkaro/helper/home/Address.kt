@@ -5,6 +5,7 @@ import com.google.firebase.firestore.GeoPoint
 
 @Keep
 data class Address(
+        val docId: String,
         val type: Long,
         val displayText: String,
         val pincode: Long,

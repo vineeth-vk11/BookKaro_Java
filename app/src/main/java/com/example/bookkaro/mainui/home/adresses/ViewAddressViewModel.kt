@@ -26,6 +26,7 @@ class ViewAddressViewModel : ViewModel() {
             val addressList = mutableListOf<Address>()
             for (doc in querySnapshot!!) {
                 addressList.add(Address(
+                        doc.id,
                         doc.getLong("type") ?: 0L,
                         doc.getString("displayText") ?: "",
                         doc.getLong("pincode") ?: 0L,

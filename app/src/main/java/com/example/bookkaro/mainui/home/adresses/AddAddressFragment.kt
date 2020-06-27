@@ -1,92 +1,94 @@
 package com.example.bookkaro.mainui.home.adresses
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.app.ActivityCompat
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.bookkaro.R
 import com.example.bookkaro.databinding.AddAddressFragmentBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
 
-class AddAddressFragment : Fragment() {
+
+class AddAddressFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMyLocationClickListener {
 
     private lateinit var binding: AddAddressFragmentBinding
     private lateinit var viewModel: AddAddressViewModel
 
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
-    private var location: Location? = null
+    private lateinit var _map: GoogleMap
+    private lateinit var _fusedLocationProviderClient: FusedLocationProviderClient
+
+    private var permissionDenied = false
     private val REQUEST_LOCATION_PERMISSION = 1
 
-    @SuppressLint("MissingPermission")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         binding = AddAddressFragmentBinding.inflate(inflater)
         viewModel = ViewModelProvider(this).get(AddAddressViewModel::class.java)
 
-        if (locationPermissionIsGranted()) {
-            fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
-            fusedLocationClient.lastLocation.addOnSuccessListener { location ->
-                if (location != null) {
-                    this.location = location
-                    with(binding.locateAddressMap) {
-                        onCreate(null)
-                        getMapAsync {
-                            com.google.android.gms.maps.MapsInitializer.initialize(context)
-                            setMapLocation(it, LatLng(location.latitude, location.longitude))
-                        }
-                    }
-                }
-            }
-        } else {
-            requestLocationPermission()
-            binding.locateAddressMap.visibility = View.GONE
-        }
+        val mapFragment = childFragmentManager.findFragmentById(R.id.locate_address_map) as SupportMapFragment
+        _fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+
+        mapFragment.getMapAsync(this)
 
         return binding.root
     }
 
-    private fun setMapLocation(map: GoogleMap, location: LatLng) {
-        with(map) {
-            moveCamera(CameraUpdateFactory.newLatLngZoom(location, 16f))
-            addMarker(MarkerOptions().position(location))
-            mapType = GoogleMap.MAP_TYPE_NORMAL
+    override fun onMapReady(googleMap: GoogleMap) {
+        _map = googleMap
+
+        googleMap.setOnMyLocationButtonClickListener(this)
+        googleMap.setOnMyLocationClickListener(this)
+        enableMyLocation()
+    }
+
+    private fun enableMyLocation() {
+        if (!::_map.isInitialized) return
+
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            _map.isMyLocationEnabled = true
+        } else {
+            requestPermissions(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_LOCATION_PERMISSION)
         }
     }
 
-    private fun locationPermissionIsGranted() = ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+    override fun onMyLocationButtonClick(): Boolean {
+        // Return false so that the default behavior occurs (the camera animates to the user's current position).
+        return false
+    }
 
-    private fun requestLocationPermission() = ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), REQUEST_LOCATION_PERMISSION)
+    override fun onMyLocationClick(location: Location) {
+        // Don't do anything so that the default behavior occurs.
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode != REQUEST_LOCATION_PERMISSION)
+            return
+        else {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                enableMyLocation()
+            } else {
+                permissionDenied = false
+            }
+        }
+    }
 
     override fun onResume() {
         super.onResume()
-        binding.locateAddressMap.onResume()
+        if (permissionDenied) {
+            Toast.makeText(requireContext(), "We won't be able to fetch your location without location permissions", Toast.LENGTH_SHORT).show()
+            permissionDenied = false
+        }
     }
-
-    override fun onPause() {
-        super.onPause()
-        binding.locateAddressMap.onPause()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        binding.locateAddressMap.onDestroy()
-    }
-
-    override fun onLowMemory() {
-        super.onLowMemory()
-        binding.locateAddressMap.onLowMemory()
-    }
-
 }
