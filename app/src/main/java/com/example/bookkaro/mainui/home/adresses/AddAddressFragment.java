@@ -108,38 +108,26 @@ public class AddAddressFragment extends Fragment implements OnMapReadyCallback, 
                             .build();
                     mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
+
                     Latitude = location.getLatitude();
                     Longitude = location.getLongitude();
+
+                    Geocoder geocoder= new Geocoder(getContext());
+                    try {
+                        List<Address> matches = geocoder.getFromLocation(Latitude,Longitude,1);
+                        Address bestMatch = (matches.isEmpty() ? null: matches.get(0));
+                        Log.i("Address is", String.valueOf(bestMatch));
+                        Log.i("Pin code is",String.valueOf(bestMatch.getPostalCode()));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
                     Log.i("latitude is",String.valueOf(location.getLatitude()));
                     Log.i("longitude is",String.valueOf(location.getLongitude()));
-
-                    getAddressFromLocation(Latitude,Longitude);
 
                 }
             }
 
         });
-    }
-
-    private void getAddressFromLocation(double latitude, double longitude){
-        Geocoder geocoder = new Geocoder(getContext(),Locale.ENGLISH);
-        try {
-            List<Address> addresses = geocoder.getFromLocation(latitude,longitude,1);
-
-            if(addresses.size()>0){
-                Address fetchedAddress = addresses.get(0);
-                StringBuilder stringBuilder = new StringBuilder();
-                for(int i = 0; i<fetchedAddress.getMaxAddressLineIndex();i++){
-                    stringBuilder.append(fetchedAddress.getAddressLine(i)).append(" ");
-                }
-                Log.i("Location is",stringBuilder.toString());
-            }else {
-                Log.i("Location is","");
-            }
-
-        } catch (IOException e){
-            e.printStackTrace();
-        }
-
     }
 }
