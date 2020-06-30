@@ -70,6 +70,9 @@ public class AddAddressFragment extends Fragment implements OnMapReadyCallback, 
     @Override
     public void onMarkerDragEnd(Marker marker) {
         pos = new LatLng(marker.getPosition().latitude, marker.getPosition().longitude);
+        Log.i("Updated Latitude", String.valueOf(marker.getPosition().latitude));
+        Log.i("Updated Longitude", String.valueOf(marker.getPosition().longitude));
+        getLastKnownLocation();
     }
 
     @Override
