@@ -6,18 +6,18 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import com.example.bookkaro.R;
+import com.example.bookkaro.databinding.AddAddressFragmentBinding;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -30,31 +30,64 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.chip.ChipGroup;
+import com.google.firebase.firestore.GeoPoint;
 
-import java.io.IOException;
 import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
 
 public class AddAddressFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnMarkerDragListener {
 
+    private AddAddressFragmentBinding binding;
+    private AddAddressViewModel viewmodel;
+
     private GoogleMap mMap;
-    private LatLng pos;
     private FusedLocationProviderClient fusedLocationProviderClient;
-    private TextView address;
-    private Double Latitude;
-    private Double Longitude;
+
+    private String address;
+    private String pincode;
+
+    private Double _latitude;
+    private Double _longitude;
+
+    private Long type = 500L;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.add_address_fragment, container, false);
+        binding = AddAddressFragmentBinding.inflate(inflater);
+        viewmodel = new ViewModelProvider(this).get(AddAddressViewModel.class);
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireActivity());
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.locate_address_map);
         mapFragment.getMapAsync(this);
-        return view;
+
+        binding.addressTypeChipGroup.setOnCheckedChangeListener(new ChipGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(ChipGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.home_chip:
+                        type = com.example.bookkaro.helper.home.Address.ADDRESS_HOME;
+                        break;
+                    case R.id.work_chip:
+                        type = com.example.bookkaro.helper.home.Address.ADDRESS_OFFICE;
+                        break;
+                    case R.id.other_chip:
+                        type = com.example.bookkaro.helper.home.Address.ADDRESS_OTHER;
+                        break;
+                }
+            }
+        });
+
+        binding.saveAddressButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewmodel.saveAddressToFirestore(address, binding.landmarkEdit.getText().toString(), new GeoPoint(_latitude, _longitude), pincode, type);
+                Navigation.findNavController(binding.getRoot()).navigate(R.id.action_addAddressFragment_to_viewAddressFragment);
+            }
+        });
+
+        return binding.getRoot();
     }
 
     @Override
@@ -69,9 +102,8 @@ public class AddAddressFragment extends Fragment implements OnMapReadyCallback, 
 
     @Override
     public void onMarkerDragEnd(Marker marker) {
-        pos = new LatLng(marker.getPosition().latitude, marker.getPosition().longitude);
-        Log.i("Updated Latitude", String.valueOf(marker.getPosition().latitude));
-        Log.i("Updated Longitude", String.valueOf(marker.getPosition().longitude));
+        _latitude = marker.getPosition().latitude;
+        _longitude = marker.getPosition().longitude;
         getLastKnownLocation();
     }
 
@@ -96,9 +128,11 @@ public class AddAddressFragment extends Fragment implements OnMapReadyCallback, 
         fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
             @Override
             public void onComplete(@NonNull Task<Location> task) {
-                if (task.isSuccessful() && task.getResult()!=null){
+                if (task.isSuccessful() && task.getResult() != null) {
                     Location location = task.getResult();
-                    pos = new LatLng(location.getLatitude(), location.getLongitude());
+                    _latitude = location.getLatitude();
+                    _longitude = location.getLongitude();
+                    LatLng pos = new LatLng(location.getLatitude(), location.getLongitude());
                     mMap.addMarker(new MarkerOptions().position(pos).draggable(true).title("Current location"));
                     mMap.moveCamera(CameraUpdateFactory.newLatLng(pos));
                     mMap.animateCamera(CameraUpdateFactory.zoomTo(17));
@@ -111,23 +145,16 @@ public class AddAddressFragment extends Fragment implements OnMapReadyCallback, 
                             .build();
                     mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
-
-                    Latitude = location.getLatitude();
-                    Longitude = location.getLongitude();
-
                     Geocoder geocoder= new Geocoder(getContext());
                     try {
-                        List<Address> matches = geocoder.getFromLocation(Latitude,Longitude,1);
-                        Address bestMatch = (matches.isEmpty() ? null: matches.get(0));
-                        Log.i("Address is", String.valueOf(bestMatch));
-                        Log.i("Pin code is",String.valueOf(bestMatch.getPostalCode()));
-                    } catch (IOException e) {
+                        List<Address> matches = geocoder.getFromLocation(_latitude, _longitude, 1);
+                        Address bestMatch = (matches.isEmpty() ? null : matches.get(0));
+                        address = bestMatch.getAddressLine(0);
+                        pincode = bestMatch.getPostalCode();
+                        binding.addressText.setText(address);
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
-
-                    Log.i("latitude is",String.valueOf(location.getLatitude()));
-                    Log.i("longitude is",String.valueOf(location.getLongitude()));
-
                 }
             }
 

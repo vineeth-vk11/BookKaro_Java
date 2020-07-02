@@ -239,5 +239,11 @@
         android:id="@+id/addAddressFragment"
         android:name="com.example.bookkaro.mainui.home.adresses.AddAddressFragment"
         android:label="AddAddressFragment"
-        tools:layout="@layout/add_address_fragment" />
+        tools:layout="@layout/add_address_fragment">
+        <action
+            android:id="@+id/action_addAddressFragment_to_viewAddressFragment"
+            app:destination="@id/viewAddressFragment"
+            app:popUpTo="@id/viewAddressFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

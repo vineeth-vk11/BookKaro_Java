@@ -182,4 +182,7 @@
     <string name="address_home">Home</string>
     <string name="address_work">Work</string>
     <string name="address_other">Other</string>
+    <string name="save">Save</string>
+    <string name="apt_no">House/Apartment/Block No.</string>
+    <string name="landmark">Landmark</string>
 </resources>
