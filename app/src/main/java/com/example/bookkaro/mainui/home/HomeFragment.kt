@@ -45,14 +45,23 @@ class HomeFragment : Fragment() {
             }
         })
 
-        val navController = findNavController()
-        viewModel.getServices().observe(viewLifecycleOwner, Observer { services ->
-            if (!services.isNullOrEmpty()) {
-                binding.servicesRecycler.apply {
-                    layoutManager = LinearLayoutManager(requireContext())
-                    adapter = ServicesGroupAdapter(requireContext(), services, navController)
-                }
+
+        viewModel.getAddresses().observe(viewLifecycleOwner, Observer { addresses ->
+            val pincode = addresses?.filter { it.default }?.get(0)?.pincode ?: 0L
+            binding.currentAddressText.text = if (pincode != 0L) pincode.toString() else "No address"
+            if (pincode != 0L) {
+                viewModel.getServices(pincode).observe(viewLifecycleOwner, Observer { services ->
+                    if (!services.isNullOrEmpty()) {
+                        binding.servicesRecycler.apply {
+                            layoutManager = LinearLayoutManager(requireContext())
+                            adapter = ServicesGroupAdapter(requireContext(), services, findNavController())
+                        }
+                    }
+                })
+            } else {
+                findNavController().navigate(R.id.action_homeFragment_to_viewAddressFragment)
             }
+
         })
 
         binding.currentAddressText.setOnClickListener { findNavController().navigate(R.id.action_homeFragment_to_viewAddressFragment) }

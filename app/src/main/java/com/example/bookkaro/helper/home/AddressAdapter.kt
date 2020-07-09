@@ -1,17 +1,18 @@
 package com.example.bookkaro.helper.home
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bookkaro.R
+import com.example.bookkaro.mainui.home.adresses.ViewAddressViewModel
 import com.google.android.material.card.MaterialCardView
 import kotlinx.android.synthetic.main.list_item_address.view.*
 
-class AddressAdapter : RecyclerView.Adapter<AddressAdapter.AddressViewHolder>() {
+class AddressAdapter(private val navController: NavController, private val viewModel: ViewAddressViewModel) : RecyclerView.Adapter<AddressAdapter.AddressViewHolder>() {
 
     var data = listOf<Address>()
         set(value) {
@@ -46,9 +47,9 @@ class AddressAdapter : RecyclerView.Adapter<AddressAdapter.AddressViewHolder>() 
         holder.addressSubHeaderText.text = item.displayText
 
         holder.addressCard.setOnClickListener {
-            Log.i("AddressAdapter", "Address item clicked: $position")
+            viewModel.setDefaultAddress(item.docId)
+            navController.navigate(R.id.action_viewAddressFragment_to_homeFragment)
         }
-
     }
 
     inner class AddressViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

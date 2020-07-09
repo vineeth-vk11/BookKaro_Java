@@ -14,7 +14,8 @@ class AddAddressViewModel : ViewModel() {
                         "landmark" to landmark,
                         "location" to location,
                         "pincode" to pincode.toLong(),
-                        "type" to type
+                        "type" to type,
+                        "default" to false
                 )
         )
     }

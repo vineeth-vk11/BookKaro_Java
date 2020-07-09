@@ -24,7 +24,7 @@ class ViewAddressFragment : Fragment() {
 
         binding.addAddressCard.setOnClickListener { findNavController().navigate(R.id.action_viewAddressFragment_to_addAddressFragment) }
 
-        val adapter = AddressAdapter()
+        val adapter = AddressAdapter(findNavController(), viewModel)
         binding.addressesRecycler.adapter = adapter
 
         viewModel.getAddresses().observe(viewLifecycleOwner, Observer {

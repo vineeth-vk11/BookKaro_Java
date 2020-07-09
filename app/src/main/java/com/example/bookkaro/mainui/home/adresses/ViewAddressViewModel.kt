@@ -30,8 +30,9 @@ class ViewAddressViewModel : ViewModel() {
                         doc.getLong("type") ?: 0L,
                         doc.getString("displayText") ?: "",
                         doc.getLong("pincode") ?: 0L,
-                        doc.getGeoPoint("location") ?: GeoPoint(0.0, 0.0))
-                )
+                        doc.getGeoPoint("location") ?: GeoPoint(0.0, 0.0),
+                        doc.getBoolean("default") ?: false
+                ))
             }
             addresses.value = addressList
         }
@@ -39,4 +40,19 @@ class ViewAddressViewModel : ViewModel() {
     }
 
 
+    fun setDefaultAddress(docIdToMakeDefault: String) {
+        addresses.value?.forEach { address ->
+            if (address.docId == docIdToMakeDefault) {
+                FirebaseFirestore.getInstance()
+                        .collection("UserData/$uid/Addresses")
+                        .document(address.docId)
+                        .update("default", true)
+            } else {
+                FirebaseFirestore.getInstance()
+                        .collection("UserData/$uid/Addresses")
+                        .document(address.docId)
+                        .update("default", false)
+            }
+        }
+    }
 }
