@@ -104,7 +104,16 @@ public class AddAddressFragment extends Fragment implements OnMapReadyCallback, 
     public void onMarkerDragEnd(Marker marker) {
         _latitude = marker.getPosition().latitude;
         _longitude = marker.getPosition().longitude;
-        getLastKnownLocation();
+        Geocoder geocoder= new Geocoder(getContext());
+        try {
+            List<Address> matches = geocoder.getFromLocation(_latitude, _longitude, 1);
+            Address bestMatch = (matches.isEmpty() ? null : matches.get(0));
+            address = bestMatch.getAddressLine(0);
+            pincode = bestMatch.getPostalCode();
+            binding.addressText.setText(address);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
