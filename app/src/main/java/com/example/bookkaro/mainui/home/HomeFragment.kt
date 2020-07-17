@@ -65,7 +65,6 @@ class HomeFragment : Fragment() {
             } else {
                 findNavController().navigate(R.id.action_homeFragment_to_viewAddressFragment)
             }
-
         })
 
         binding.currentAddressText.setOnClickListener { findNavController().navigate(R.id.action_homeFragment_to_viewAddressFragment) }

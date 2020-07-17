@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.bookkaro.R
 import com.example.bookkaro.helper.ServicesGroup
+import com.example.bookkaro.helper.home.Address
 import com.example.bookkaro.helper.shop.CartItem
 import com.example.bookkaro.helper.shop.Shop
 import com.example.bookkaro.helper.shop.ShopItem
@@ -15,6 +16,7 @@ import com.example.bookkaro.helper.shop.ShopUtils
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.GeoPoint
 import java.util.*
 
 class ShopsRepository(private val application: Application) {
@@ -45,13 +47,37 @@ class ShopViewModel(private val application: Application) : ViewModel() {
 
     private val firestoreRepository = ShopsRepository(application)
 
+    private val uid = FirebaseAuth.getInstance().currentUser?.uid ?: "nouid"
+
     private var shops: MutableLiveData<List<Shop>> = MutableLiveData()
     private var shopItems: MutableLiveData<List<ShopItem>> = MutableLiveData()
     var cartItems: List<CartItem> = ShopUtils(application).fetchQuantityItems()
 
-    val pin = 411014
+    private val _addresses: MutableLiveData<List<Address>> = MutableLiveData()
+    fun getAddresses(): LiveData<List<Address>> {
+        FirebaseFirestore.getInstance().collection("UserData/$uid/Addresses").addSnapshotListener { querySnapshot, firebaseFirestoreException ->
+            if (firebaseFirestoreException != null) {
+                Log.e(TAG, "Firestore listening failed.")
+                _addresses.value = null
+                return@addSnapshotListener
+            }
+            val addressList = mutableListOf<Address>()
+            for (doc in querySnapshot!!) {
+                addressList.add(Address(
+                        doc.id,
+                        doc.getLong("type") ?: 0L,
+                        doc.getString("displayText") ?: "",
+                        doc.getLong("pincode") ?: 0L,
+                        doc.getGeoPoint("location") ?: GeoPoint(0.0, 0.0),
+                        doc.getBoolean("default") ?: false
+                ))
+            }
+            _addresses.value = addressList
+        }
+        return _addresses
+    }
 
-    fun getShops(shopType: Long): LiveData<List<Shop>> {
+    fun getShops(shopType: Long, pin: Long): LiveData<List<Shop>> {
         firestoreRepository.getShops().whereArrayContains(application.getString(R.string.firestore_collection_shop_data_field_service_location), pin).addSnapshotListener { querySnapshot, firebaseFirestoreException ->
             if (firebaseFirestoreException != null) {
                 Log.e(TAG, "Firestore shops listening failed.")

@@ -29,19 +29,24 @@ class SelectShopFragment : Fragment() {
         val shopType = args.shopType
 
         viewModel = ViewModelProvider(this, ShopViewModelFactory(requireActivity().application)).get(ShopViewModel::class.java)
-
-        viewModel.getShops(shopType).observe(viewLifecycleOwner, Observer { shops ->
-            if (!shops.isNullOrEmpty()) {
-                setShopsExist()
-                binding.shopsRecycler.apply {
-                    layoutManager = LinearLayoutManager(requireContext())
-                    adapter = ShopAdapter(shops, requireContext(), findNavController())
+        viewModel.getAddresses().observe(viewLifecycleOwner, Observer { addresses ->
+            if (addresses.isNotEmpty()) {
+                val pincode = addresses?.filter { it.default }?.get(0)?.pincode ?: 0L
+                if (pincode != 0L) {
+                    viewModel.getShops(shopType, pincode).observe(viewLifecycleOwner, Observer { shops ->
+                        if (!shops.isNullOrEmpty()) {
+                            setShopsExist()
+                            binding.shopsRecycler.apply {
+                                layoutManager = LinearLayoutManager(requireContext())
+                                adapter = ShopAdapter(shops, requireContext(), findNavController())
+                            }
+                        } else {
+                            setNoShops()
+                        }
+                    })
                 }
-            } else {
-                setNoShops()
             }
         })
-
         return binding.root
     }
 
