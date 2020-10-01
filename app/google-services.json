@@ -8,6 +8,96 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:908885664440:android:ad84d9213183dcdd348a4d",
+        "android_client_info": {
+          "package_name": "com.bookkaro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "908885664440-fncrtht6v557ed39oc5jo66ovks0bk20.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bookkaro",
+            "certificate_hash": "14f10fe11457003ed4ec9e14ef72659b0ce352ca"
+          }
+        },
+        {
+          "client_id": "908885664440-idjdhfolml310ait33hclroqq1v6jena.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bookkaro",
+            "certificate_hash": "f862dd3296bba97bb70d51c51665e31482cf38ac"
+          }
+        },
+        {
+          "client_id": "908885664440-m52hpti0fvhtbnrm6p123oe4vslgm198.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bookkaro",
+            "certificate_hash": "8481498d744f894a6dbe670ac530e382491ef038"
+          }
+        },
+        {
+          "client_id": "908885664440-qutm1chuu496fn3f32qvv7tghtashier.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmpMRlpYPxDJLj3hbV7jsxBan2ShffWks"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "908885664440-qutm1chuu496fn3f32qvv7tghtashier.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:908885664440:android:dd4500aedbd6fadc348a4d",
+        "android_client_info": {
+          "package_name": "com.bookkarovendor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "908885664440-atfcvin3f2k71922pkq8ps0e1v2aiinb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bookkarovendor",
+            "certificate_hash": "8481498d744f894a6dbe670ac530e382491ef038"
+          }
+        },
+        {
+          "client_id": "908885664440-qutm1chuu496fn3f32qvv7tghtashier.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmpMRlpYPxDJLj3hbV7jsxBan2ShffWks"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "908885664440-qutm1chuu496fn3f32qvv7tghtashier.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:908885664440:android:c4d63d5571be8ee4348a4d",
         "android_client_info": {
           "package_name": "com.example.bookkaro"
@@ -15,7 +105,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "908885664440-h5lbe2t65ltfga1a8vg4s83h9n63d8tf.apps.googleusercontent.com",
+          "client_id": "908885664440-kq4lge7b11objr549c2l61c41lfra8dm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bookkaro",
+            "certificate_hash": "f862dd3296bba97bb70d51c51665e31482cf38ac"
+          }
+        },
+        {
+          "client_id": "908885664440-pa425la5lstpelmispoe1djsumg194i6.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.bookkaro",
@@ -23,10 +121,55 @@
           }
         },
         {
-          "client_id": "908885664440-dq49rnjlsbsv2aif7s95smj3d06oe2mr.apps.googleusercontent.com",
+          "client_id": "908885664440-67j7hu87bqrmqqg1s7u67u67vodn9ngu.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.bookkaro",
+            "certificate_hash": "2398c0a23b43e6609097902f3ccb48df567bb294"
+          }
+        },
+        {
+          "client_id": "908885664440-qutm1chuu496fn3f32qvv7tghtashier.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmpMRlpYPxDJLj3hbV7jsxBan2ShffWks"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "908885664440-qutm1chuu496fn3f32qvv7tghtashier.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:908885664440:android:0ff67948eab539a1348a4d",
+        "android_client_info": {
+          "package_name": "com.example.bookkarovendor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "908885664440-64sm466gfisooaqu07pqvbiea39ah86b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bookkarovendor",
+            "certificate_hash": "8481498d744f894a6dbe670ac530e382491ef038"
+          }
+        },
+        {
+          "client_id": "908885664440-v4etha5ua7usf8p32u1i36i15ch8kvvi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bookkarovendor",
             "certificate_hash": "2398c0a23b43e6609097902f3ccb48df567bb294"
           }
         },

@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import com.example.bookkaro.MainActivity
+import com.example.bookkaro.HomeActivity
 import com.example.bookkaro.R
 import com.example.bookkaro.databinding.FragmentLoginEnterDetailsBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -41,7 +41,7 @@ class LoginEnterDetailsFragment : Fragment() {
                             db.collection(getString(R.string.firestore_collection_user_data)).document(user.uid)
                                     .set(userData)
                                     .addOnSuccessListener {
-                                        val intent = Intent(activity, MainActivity::class.java)
+                                        val intent = Intent(activity, HomeActivity::class.java)
                                         startActivity(intent)
                                         requireActivity().finish()
                                     }
@@ -51,7 +51,7 @@ class LoginEnterDetailsFragment : Fragment() {
                                     }
                         }
                     } else {
-                        val intent = Intent(activity, MainActivity::class.java)
+                        val intent = Intent(activity, HomeActivity::class.java)
                         startActivity(intent)
                         requireActivity().finish()
                     }
